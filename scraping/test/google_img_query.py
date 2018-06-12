@@ -36,11 +36,12 @@ def query_on_google_img(query=""):
         src = driver.page_source
         time.sleep(20)
         soup = BeautifulSoup(src, "html.parser")
-        imgs = soup.find_all("img")
-        print(f"Found {len(imgs)} pictures.")
+        jscontroller = soup.find_all("div", attrs={"jscontroller": "Q7Rsec"})
+        print(f"Found {len(jscontroller)} pictures.")
         print("===================================")
-        for i, img_tag in enumerate(imgs):
-            src = img_tag.get("src")
+        for i, js in enumerate(jscontroller):
+            img = js.find_all("img")[0]
+            src = img.get("src")
             try:
                 urlretrieve(src, f"{file_path}{i}.jpg")
                 time.sleep(10)
