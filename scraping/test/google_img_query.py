@@ -4,11 +4,12 @@ from pyvirtualdisplay import Display
 import os
 import time
 import traceback
+from bs4 import BeautifulSoup
 from urllib.request import urlretrieve
 
 
 def query_on_google_img(query=""):
-    disp = Display(visible=1, size=(800, 600))
+    disp = Display(visible=0, size=(800, 600))
     disp.start()
 
     print("=======================================")
@@ -32,15 +33,20 @@ def query_on_google_img(query=""):
         input_query.send_keys(query)
         input_query.send_keys(Keys.ENTER)
 
-        imgs = driver.find_elements_by_tag_name("img")
+        src = driver.page_source
+        time.sleep(20)
+        soup = BeautifulSoup(src, "html.parser")
+        imgs = soup.find_all("img")
         print(f"Found {len(imgs)} pictures.")
         print("===================================")
         for i, img_tag in enumerate(imgs):
-            src = img_tag.get_attribute("src")
+            src = img_tag.get("src")
             try:
-                urlretrieve(src, f"{file_path}{i}.jpeg")
-                time.sleep(5)
+                urlretrieve(src, f"{file_path}{i}.jpg")
+                time.sleep(10)
+                print(f"Successfully saved {i}.png")
             except Exception as e:
+                print(f"Failed to retreive: {src}")
                 traceback.format_exc()
     except Exception:
         print(traceback.format_exc())
@@ -53,4 +59,6 @@ def query_on_google_img(query=""):
 
 
 if __name__ == "__main__":
-    query_on_google_img("ワンピース 赤")
+    colors = ["赤", "青", "緑", "黄色", "紫", "黒", "白", "オレンジ"]
+    for c in colors:
+        query_on_google_img(f"ワンピース {c}")
