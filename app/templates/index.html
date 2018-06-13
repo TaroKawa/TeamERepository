@@ -1,11 +1,26 @@
 <!-- templates/index.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>home</title>
 </head>
 <body>
-    <p>{{ message }}</p>
+    <p>Hello {{ message }} !!!</p>
+    
+
+    <ul>
+    <li><a href="{{ url_for('index') }}">home</a></li>
+    <li><a href="{{ url_for('page1') }}">page 1</a></li>
+    <li><a href="https://qiita.com/ynakayama/items/2cc0b1d3cf1a2da612e4"  target="_blank">Flask入門</a></li>
+</ul>
+   
+    <!-- page2.html -->
+<!-- 下記を追加html -->       
+        <form action="./page2">
+            <input type='text' name='user' placeholder='name'>
+            <input type = "submit" value ="Send">
+        </form>
+  
 </body>
 </html>
