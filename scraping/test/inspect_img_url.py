@@ -22,7 +22,7 @@ input_query.send_keys(Keys.ENTER)
 jscontroller = driver.find_elements_by_tag_name("")
 imgs = driver.find_elements_by_tag_name("img")
 driver.implicitly_wait(10)
-print(imgs[59].get_attribute("src"))
+print(imgs[24].get_attribute("src"))
 
 src = driver.page_source
 soup = BeautifulSoup(src, "html.parser")

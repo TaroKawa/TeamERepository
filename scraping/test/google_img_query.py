@@ -1,5 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from pyvirtualdisplay import Display
 import os
 import time
@@ -22,7 +25,7 @@ def query_on_google_img(query=""):
         driver_path = "../mac/chromedriver"
 
     driver = webdriver.Chrome(executable_path=driver_path)
-    driver.implicitly_wait(2)
+    driver.implicitly_wait(10)
     driver.get("https://www.google.co.jp/imghp?hl=ja")
 
     os.mkdir(f"../../data/{query.split()[1]}")
@@ -34,21 +37,25 @@ def query_on_google_img(query=""):
         input_query.send_keys(Keys.ENTER)
 
         src = driver.page_source
-        time.sleep(20)
         soup = BeautifulSoup(src, "html.parser")
         jscontroller = soup.find_all("div", attrs={"jscontroller": "Q7Rsec"})
         print(f"Found {len(jscontroller)} pictures.")
         print("===================================")
         for i, js in enumerate(jscontroller):
             img = js.find_all("img")[0]
-            src = img.get("src")
+            src = img.get("data-src")
             try:
                 urlretrieve(src, f"{file_path}{i}.jpg")
-                time.sleep(10)
-                print(f"Successfully saved {i}.png")
+                time.sleep(5)
+                print(f"Successfully saved {i}.jpg")
             except Exception as e:
-                print(f"Failed to retreive: {src}")
-                traceback.format_exc()
+                try:
+                    src = img.get("src")
+                    urlretrieve(src, f"{file_path}{i}.jpg")
+                    time.sleep(5)
+                    print(f"Successfully saved {i}.jpg)
+                except Exception as e:
+                    print(f"Failed to retreive: {src}")
     except Exception:
         print(traceback.format_exc())
         driver.quit()
