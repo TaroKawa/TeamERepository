@@ -5,8 +5,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from pyvirtualdisplay import Display
 import os
+import shutil
 import time
 import traceback
+import sys
 from bs4 import BeautifulSoup
 from urllib.request import urlretrieve
 
@@ -28,6 +30,9 @@ def query_on_google_img(query=""):
     driver.implicitly_wait(10)
     driver.get("https://www.google.co.jp/imghp?hl=ja")
 
+    if os.path.isdir(f"../../data/{query.split()[1]}"):
+        shutil.rmtree(f"../../data/{query.split()[1]}")
+
     os.mkdir(f"../../data/{query.split()[1]}")
     file_path = f"../../data/{query.split()[1]}/"
 
@@ -35,6 +40,25 @@ def query_on_google_img(query=""):
         input_query = driver.find_element_by_xpath('//*[@id="lst-ib"]')
         input_query.send_keys(query)
         input_query.send_keys(Keys.ENTER)
+
+        for i in range(5):
+            driver.execute_script('scroll(0, document.body.scrollHeight)')
+            print('Waiting for contents to be loaded...', file=sys.stderr)
+            time.sleep(2)
+
+        driver.execute_script('scroll(0, document.body.scrollHeight)')
+        print("Waiting for the button to be clickable...", file=sys.stderr)
+        time.sleep(2)
+
+        button = driver.find_element_by_xpath('//*[@id="smb"]')
+        button.click()
+        print("Waiting for contents to be loaded...", file=sys.stderr)
+        time.sleep(2)
+
+        for i in range(5):
+            driver.execute_script('scroll(0, document.body.scrollHeight)')
+            print('Waiting for contents to be loaded...', file=sys.stderr)
+            time.sleep(2)
 
         src = driver.page_source
         soup = BeautifulSoup(src, "html.parser")
@@ -52,8 +76,8 @@ def query_on_google_img(query=""):
                 try:
                     src = img.get("src")
                     urlretrieve(src, f"{file_path}{i}.jpg")
-                    time.sleep(5)
-                    print(f"Successfully saved {i}.jpg)
+                    time.sleep(3)
+                    print(f"Successfully saved {i}.jpg")
                 except Exception as e:
                     print(f"Failed to retreive: {src}")
     except Exception:

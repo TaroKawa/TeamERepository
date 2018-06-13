@@ -1,10 +1,15 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from pyvirtualdisplay import Display
-import time
-from urllib.request import urlretrieve
-from bs4 import BeautifulSoup
 import os
+import time
+import traceback
+import sys
+from bs4 import BeautifulSoup
+from urllib.request import urlretrieve
 
 os.getcwd()
 os.chdir("/home/hidehisa/common/TeamERepository/scraping/test")
@@ -19,7 +24,11 @@ input_query = driver.find_element_by_xpath('//*[@id="lst-ib"]')
 input_query.send_keys("ワンピース 赤")
 input_query.send_keys(Keys.ENTER)
 
-jscontroller = driver.find_elements_by_tag_name("")
+driver.execute_script('scroll(0, document.body.scrollHeight)')
+print('Waiting for contents to be loaded...', file=sys.stderr)
+time.sleep(2)
+
+
 imgs = driver.find_elements_by_tag_name("img")
 driver.implicitly_wait(10)
 print(imgs[24].get_attribute("src"))
