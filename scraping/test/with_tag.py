@@ -42,4 +42,8 @@ def get_tag(driver, query):
     input_query.send_keys(query)
     input_query.send_keys(Keys.ENTER)
 
-    
+    tags = driver.find_elements_by_css_selector(".ZO5Spb")
+    return tags, driver
+
+
+def tag_
