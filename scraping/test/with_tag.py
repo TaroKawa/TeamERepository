@@ -25,6 +25,9 @@ def access():
     driver = webdriver.Chrome(executable_path=driver_path)
     driver.implicitly_wait(10)
     driver.get("https://www.google.co.jp/imghp?hl=ja")
+    input_query = driver.find_element_by_xpath('//*[@id="lst-ib"]')
+    input_query.send_keys(query)
+    input_query.send_keys(Keys.ENTER)
     return driver, disp
 
 
@@ -41,10 +44,6 @@ def dir_manage(tag, basecolor):
 
 
 def get_tag(driver, query):
-    input_query = driver.find_element_by_xpath('//*[@id="lst-ib"]')
-    input_query.send_keys(query)
-    input_query.send_keys(Keys.ENTER)
-
     tags = driver.find_elements_by_css_selector(".ZO5Spb")
     return tags, driver
 
@@ -103,7 +102,9 @@ def img_query_with_one_tag(query):
     driver, disp = access()
     tags, driver = get_tag(driver, query)
     basecolor = query.split()[1]
-    for tag in tags:
+    for i in range(len(tags)):
+        tags, driver = get_tag(driver, query)
+        tag = tags[i]
         tag_name = tag.find_element_by_tag_name("span").text
         driver, jscontroller = search_with_one_tag(driver, tag)
         retreive_img(jscontroller, tag_name, basecolor)
@@ -112,7 +113,7 @@ def img_query_with_one_tag(query):
 
 
 if __name__ == "__main__":
-    colors = ["赤", "青", "緑", "黄色", "紫", "黒", "白", "オレンジ"]
+    colors = ["紫", "黒"]
     for c in colors:
         query = f"ワンピース {c}"
         img_query_with_one_tag(query)
