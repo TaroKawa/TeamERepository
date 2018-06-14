@@ -91,6 +91,6 @@ def query_on_google_img(query=""):
 
 
 if __name__ == "__main__":
-    colors = ["緑", "白", "オレンジ"]
+    colors = ["桃色", "紅", "水色", "黄緑"]
     for c in colors:
         query_on_google_img(f"ワンピース {c}")
