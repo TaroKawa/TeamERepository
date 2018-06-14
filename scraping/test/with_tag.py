@@ -107,9 +107,12 @@ def img_query_with_one_tag(query):
     for i in range(len(tags)):
         tags, driver = get_tag(driver, query)
         tag = tags[i]
-        tag_name = tag.find_element_by_tag_name("span").text
-        driver, jscontroller = search_with_one_tag(driver, tag)
-        retreive_img(jscontroller, tag_name, basecolor)
+        try:
+            tag_name = tag.find_element_by_tag_name("span").text
+            driver, jscontroller = search_with_one_tag(driver, tag)
+            retreive_img(jscontroller, tag_name, basecolor)
+        except Exception:
+            pass
     driver.quit()
     disp.stop()
 
