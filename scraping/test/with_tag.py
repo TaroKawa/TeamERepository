@@ -36,7 +36,7 @@ def dir_manage(tag, basecolor):
     if not os.path.isdir(f"../../data/{basecolor}"):
         os.mkdir(f"../../data/{basecolor}")
     if os.path.isdir(file_path):
-        shutil.rmtree(file_path)
+        return False
 
     os.mkdir(file_path)
     print(f"Made directory {file_path}")
@@ -54,17 +54,17 @@ def search_with_one_tag(driver, tag):
     for i in range(5):
         driver.execute_script('scroll(0, document.body.scrollHeight)')
         print('Waiting for contents to be loaded...', file=sys.stderr)
-        time.sleep(2)
+        time.sleep(4)
 
     button = driver.find_element_by_xpath('//*[@id="smb"]')
     button.click()
     print("Waiting for contents to be loaded...", file=sys.stderr)
-    time.sleep(2)
+    time.sleep(4)
 
     for i in range(5):
         driver.execute_script('scroll(0, document.body.scrollHeight)')
         print('Waiting for contents to be loaded...', file=sys.stderr)
-        time.sleep(2)
+        time.sleep(4)
     src = driver.page_source
     soup = BeautifulSoup(src, "html.parser")
     jscontroller = soup.find_all("div", attrs={"jscontroller": "Q7Rsec"})
@@ -76,6 +76,8 @@ def search_with_one_tag(driver, tag):
 
 def retreive_img(jscontroller, tag, basecolor):
     file_path = dir_manage(tag, basecolor)
+    if not file_path:
+        return
     n = len(jscontroller)
     for i, js in enumerate(jscontroller):
         img = js.find_all("img")[0]
