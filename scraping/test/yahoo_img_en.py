@@ -6,11 +6,11 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from pyvirtualdisplay import Display
 from bs4 import BeautifulSoup
-from urllib.request import urlretrieve
+from urllib.request import urlretrieve, urlopen
 
 
 def access():
-    disp = Display(visible=0, size=(800, 600))
+    disp = Display(visible=0, size=(1920, 1080))
     disp.start()
 
     print("==============================")
@@ -88,14 +88,14 @@ def click_tag(driver, color_idx, size_idx):
 
 
 def scroll_and_collect(driver):
-    for i in range(10):
+    for i in range(50):
         try:
-            for i in range(10):
+            for i in range(2):
                 driver.execute_script('scroll(0, document.body.scrollHeight)')
                 print('Waiting for contents to be loaded...', file=sys.stderr)
                 time.sleep(3)
 
-            button = driver.find_element_by_css_selector(".ygbt")
+            button = driver.find_element_by_css_selector(".more-res")
             button.click()
             print("Button clicked to find more images...", file=sys.stderr)
             time.sleep(4)
@@ -119,7 +119,12 @@ def retreive_img(li, size, color):
         src = a_tag.get("href")
         src = "https://images.search.yahoo.com" + src
         try:
-            urlretrieve(src, f"{file_path}/{i}.jpg")
+            html = urlopen(src)
+            soup = BeautifulSoup(html, "html.parser")
+            li_inside = soup.find("li", attrs={"class": "initial"})
+            img = li_inside.find("img")
+            img_src = img.get("src")
+            urlretrieve(img_src, f"{file_path}/{i}.jpg")
             time.sleep(3)
             percentage = ((i+1) / n) * 100
             sys.stdout.write(f"\r Finished {percentage:.2f} percent")
