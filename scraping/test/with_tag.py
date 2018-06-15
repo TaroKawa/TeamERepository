@@ -118,7 +118,7 @@ def img_query_with_one_tag(query):
 
 
 if __name__ == "__main__":
-    colors = ["紫", "黒"]
+    colors = ["青", "緑"]
     for c in colors:
         query = f"ワンピース {c}"
         img_query_with_one_tag(query)
