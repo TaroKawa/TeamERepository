@@ -1,14 +1,20 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from pyvirtualdisplay import Display
 import os
+import shutil
 import time
 import traceback
+import sys
+from bs4 import BeautifulSoup
 from urllib.request import urlretrieve
 
 
 def query_on_google_img(query=""):
-    disp = Display(visible=1, size=(800, 600))
+    disp = Display(visible=0, size=(800, 600))
     disp.start()
 
     print("=======================================")
@@ -21,8 +27,11 @@ def query_on_google_img(query=""):
         driver_path = "../mac/chromedriver"
 
     driver = webdriver.Chrome(executable_path=driver_path)
-    driver.implicitly_wait(2)
+    driver.implicitly_wait(10)
     driver.get("https://www.google.co.jp/imghp?hl=ja")
+
+    if os.path.isdir(f"../../data/{query.split()[1]}"):
+        shutil.rmtree(f"../../data/{query.split()[1]}")
 
     os.mkdir(f"../../data/{query.split()[1]}")
     file_path = f"../../data/{query.split()[1]}/"
@@ -32,16 +41,45 @@ def query_on_google_img(query=""):
         input_query.send_keys(query)
         input_query.send_keys(Keys.ENTER)
 
-        imgs = driver.find_elements_by_tag_name("img")
-        print(f"Found {len(imgs)} pictures.")
+        for i in range(5):
+            driver.execute_script('scroll(0, document.body.scrollHeight)')
+            print('Waiting for contents to be loaded...', file=sys.stderr)
+            time.sleep(2)
+
+        driver.execute_script('scroll(0, document.body.scrollHeight)')
+        print("Waiting for the button to be clickable...", file=sys.stderr)
+        time.sleep(2)
+
+        button = driver.find_element_by_xpath('//*[@id="smb"]')
+        button.click()
+        print("Waiting for contents to be loaded...", file=sys.stderr)
+        time.sleep(2)
+
+        for i in range(5):
+            driver.execute_script('scroll(0, document.body.scrollHeight)')
+            print('Waiting for contents to be loaded...', file=sys.stderr)
+            time.sleep(2)
+
+        src = driver.page_source
+        soup = BeautifulSoup(src, "html.parser")
+        jscontroller = soup.find_all("div", attrs={"jscontroller": "Q7Rsec"})
+        print(f"Found {len(jscontroller)} pictures.")
         print("===================================")
-        for i, img_tag in enumerate(imgs):
-            src = img_tag.get_attribute("src")
+        for i, js in enumerate(jscontroller):
+            img = js.find_all("img")[0]
+            src = img.get("data-src")
             try:
-                urlretrieve(src, f"{file_path}{i}.jpeg")
+                urlretrieve(src, f"{file_path}{i}.jpg")
                 time.sleep(5)
+                print(f"Successfully saved {i}.jpg")
             except Exception as e:
-                traceback.format_exc()
+                try:
+                    src = img.get("src")
+                    urlretrieve(src, f"{file_path}{i}.jpg")
+                    time.sleep(3)
+                    print(f"Successfully saved {i}.jpg")
+                except Exception as e:
+                    print(f"Failed to retreive: {src}")
     except Exception:
         print(traceback.format_exc())
         driver.quit()
@@ -53,4 +91,6 @@ def query_on_google_img(query=""):
 
 
 if __name__ == "__main__":
-    query_on_google_img("ワンピース 赤")
+    colors = ["桃色", "紅", "水色", "黄緑"]
+    for c in colors:
+        query_on_google_img(f"ワンピース {c}")

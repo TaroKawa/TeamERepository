@@ -1,0 +1,27 @@
+body{
+    background-color: #EEE;
+    color: #333;
+    text-align:center;
+    font-size: 30px;
+}
+
+h1, h2{
+    color: #dc8a07;
+    font-size: 13px;
+    padding: 10px 0 0 0;
+}
+
+div{
+   border-radius: 6px;
+   margin: 10px auto;
+   padding: 20px;
+}
+
+#logo{
+    width: 420px;
+}
+
+#app{
+    background-color: red;
+    width: 500px;
+}
