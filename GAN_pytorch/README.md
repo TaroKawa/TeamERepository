@@ -1,6 +1,12 @@
-# GAN_mnist
+# 画像生成
 
-The implementation of Generative Adversarial Nets in PyTorch
+画像生成プログラムのPyTorchを使った実装
+
+# Contents
+
+- DCGAN
+- VAE
+- CVAE (カテゴリごとに画像を生成するモデル)
 
 # Requirements
 pytorch (ver. 3.0)
