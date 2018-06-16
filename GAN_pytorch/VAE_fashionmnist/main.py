@@ -49,7 +49,7 @@ def encode_unit(input_features, output_features):
 
 class VAE(nn.Module):
     def __init__(self, nf=32):
-        super(CVAE, self).__init__()
+        super(VAE, self).__init__()
         self.nf = nf
 
         self.conv1 = encode_unit(1, nf)
