@@ -2,7 +2,7 @@ body{
     background-color: #EEE;
     color: #333;
     text-align:center;
-    font-size: 30px;
+    font-size: 12px;
 }
 
 h1, h2{
@@ -18,10 +18,10 @@ div{
 }
 
 #logo{
-    width: 420px;
+    width: 220px;
 }
 
 #app{
-    background-color: red;
+    background-color: white;
     width: 500px;
 }

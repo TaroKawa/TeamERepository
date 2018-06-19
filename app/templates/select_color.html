@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset = "UFT-8">
+        <title>Gabegamy</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <h1>POSTテスト</h1>
+        <div id="app">
+	    <p>  {{red_from_post }}</p>
+            <p>  {{green_from_post }}</p>
+	    <p>  {{blue_from_post }}</p>
+        </div>
+   
+        <div id="app">
+          <form action="./create_new_clothes" method="POST">
+            <p><input type='text' name='red' placeholder='RED'></p>
+            <p><input type='text' name='green' placeholder='GREEN'></p>
+	    <p><input type='text' name='blue' placeholder='BLUE'></p>
+          <p>  <input type = "submit" value ="CREATE"></p>
+          </form>
+        </div>
+    </body>
+</html>
