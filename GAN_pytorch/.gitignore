@@ -1,0 +1,5 @@
+result*
+.ipynb*
+data
+__pycache__
+lr*
