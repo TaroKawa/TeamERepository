@@ -4,18 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <title>home</title>
+    <script type="text/javascript" src="../static/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../static/modal.js"></script>
 </head>
 <body>
     <p>Hello {{ message }} !!!</p>
     <p>Create what you want to wear from the bottom of your heart !!</p>
-    
+
     <ul>
     <li><a href="{{ url_for('index') }}">home</a></li>
     <li><a href="{{ url_for('page1') }}">page 1</a></li>
     <li><a href="{{ url_for('select_color') }}">Select Color Page</a></li>
     <li><a href="https://qiita.com/ynakayama/items/2cc0b1d3cf1a2da612e4"  target="_blank">Flask入門</a></li>
 </ul>
-   
- 
+
+
 </body>
 </html>
