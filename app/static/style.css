@@ -1,27 +1,238 @@
 body{
-    background-color: #EEE;
-    color: #333;
-    text-align:center;
-    font-size: 12px;
+  background-color:#f5f5f5;
+
 }
 
-h1, h2{
-    color: #dc8a07;
-    font-size: 13px;
-    padding: 10px 0 0 0;
+
+h2.message_from_this_service{
+  font-family:SimSun;
+}
+div.box_menu{
+  display: inline-block;
+}
+div.header{
+  overflow: hidden;
+  background-color:#ffffff;
+
 }
 
-div{
-   border-radius: 6px;
-   margin: 10px auto;
-   padding: 20px;
+
+.title {
+  font-weight:bold;
+  font-size: 24px;
+  font-family:cursive;
 }
 
+.menu {
+  font-size: 20pt;
+  float: right;
+  border-style:hidden;
+}
+
+
+hr.line1 {
+}
+
+div.color_element{
+  display: inline-block;
+  padding-right: 20px;
+}
+
+div.cloth_element{
+  display: inline-block;
+  padding-right: 20px;
+}
+div.box{
+  display: inline-block;
+  padding: 20px;
+}
+div.box-container{
+  overflow: hidden;
+}
+div.image_created{
+  float:right;
+}
 #logo{
-    width: 220px;
+    width: 420px;
 }
 
 #app{
-    background-color: white;
+    background-color: red;
     width: 500px;
+}
+
+#line{
+  color: #EEEEEE;
+}
+.square_btn{
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #FFF;/*ボタン色*/
+    color: #000;
+    border: solid 2px #C0C0C0;
+    border-radius: 2px;
+}
+.square_btn:active {/*ボタンを押したとき*/
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+}
+
+button.button1 {
+    font-size: 1.4em;
+    font-weight: bold;
+    padding: 10px 10px;
+    background-color:  #000;
+    color: #fff;
+    border: solid 1px #C0C0C0;
+
+  }
+
+button.button1:hover {
+    color: #fff;
+}
+
+button.button2 {
+    font-size: 1.4em;
+    font-weight: bold;
+    padding: 10px 10px;
+    background-color: #fff;
+    color: #fff;
+    border: solid 1px #C0C0C0;
+  }
+
+button.button2:hover {
+    color: #fff;
+}
+
+button.button3 {
+    font-size: 1.4em;
+    font-weight: bold;
+    padding: 10px 10px;
+    background-color: #00F;
+    color: #fff;
+    border: solid 1px #C0C0C0;
+}
+
+button.button3:hover {
+    color: #fff;
+}
+
+button.button4 {
+    font-size: 1.4em;
+    font-weight: bold;
+    padding: 10px 10px;
+    background-color: #000080;
+    color: #fff;
+    border: solid 1px #C0C0C0;
+}
+
+button.button4:hover {
+    color: #fff;
+}
+
+
+button.button5 {
+    font-size: 1.4em;
+    font-weight: bold;
+    padding: 10px 10px;
+    background-color: #008080;
+    color: #fff;
+    border: solid 1px #C0C0C0;
+  }
+
+button.button5:hover {
+    color: #fff;
+}
+
+
+button.button6 {
+    font-size: 1.4em;
+    font-weight: bold;
+    padding: 10px 10px;
+    background-color: #008000;
+    color: #fff;
+    border: solid 1px #C0C0C0;
+  }
+
+button.button6:hover {
+    color: #fff;
+}
+
+button.button7 {
+    font-size: 1.4em;
+    font-weight: bold;
+    padding: 10px 10px;
+    background-color: #FF0;
+    color: #fff;
+    border: solid 1px #C0C0C0;
+  }
+
+button.button7:hover {
+    color: #fff;
+}
+
+
+button.button8 {
+    font-size: 1.4em;
+    font-weight: bold;
+    padding: 10px 10px;
+    background-color: #F00;
+    color: #fff;
+    border: solid 1px #C0C0C0;
+  }
+
+button.button8:hover {
+    color: #fff;
+}
+
+button.button9 {
+    font-size: 1.4em;
+    font-weight: bold;
+    padding: 10px 10px;
+    background-color: #F0F;
+    color: #fff;
+    border: solid 1px #C0C0C0;
+  }
+
+button.button9:hover {
+    color: #fff;
+}
+
+button.button10 {
+    font-size: 1.4em;
+    font-weight: bold;
+    padding: 10px 10px;
+    background-color: #800080;
+    color: #fff;
+    border: solid 1px #C0C0C0;
+  }
+
+button.button10:hover {
+    color: #fff;
+}
+
+
+/*ポップアップ用*/
+#popup-background{
+    position:fixed;     /* 位置の固定 */
+    top: 0;             /* 表示位置 */
+    left: 0;            /* 表示位置 */
+    height: 100%;       /* 画面全体に表示 */
+    width: 100%;        /* 画面全体に表示 */
+    background:#000;    /* 背景色 */
+    opacity: 0.60;      /* 透明度 */
+    margin: 0;          /* 余白の削除 */
+    padding: 0;         /* 余白の削除 */
+    z-index:1000;       /* 要素のz座標 */
+}
+#popup-item{
+    position:fixed;     /* 位置の固定 */
+    top: 50%;           /* 表示位置(真ん中に表示) */
+    left: 50%;          /* 表示位置(真ん中に表示) */
+    margin: 0;          /* 余白の削除 */
+    padding: 0;         /* 余白の削除 */
+    z-index:1001;       /* 要素のz座標 */
 }
