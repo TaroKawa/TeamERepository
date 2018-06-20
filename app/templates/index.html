@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>home</title>
+    <link rel="stylesheet" href="../static/modal.css">
     <script type="text/javascript" src="../static/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../static/modal.js"></script>
 </head>
@@ -17,7 +18,16 @@
     <li><a href="{{ url_for('select_color') }}">Select Color Page</a></li>
     <li><a href="https://qiita.com/ynakayama/items/2cc0b1d3cf1a2da612e4"  target="_blank">Flask入門</a></li>
 </ul>
+<input type="button" name="modal-start" value="open" id="modal_open">
+<div id="test">
+</div>
+<div class="modal-content">
+    <div class="modal-content-inner">
+        <p class="modal-title">This is a demo modal window</p>
+        <input type="button" name="close" value="close" class="modal-close">
+    </div>
+</div>
 
-
+<div id="modal-overlay" class="modal-close"></div>
 </body>
 </html>
