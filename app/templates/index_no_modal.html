@@ -1,0 +1,87 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="Stylesheet" href="/static/style.css">
+    <title>home</title>
+</head>
+<body>
+  <div class="header">
+    <div class="box_menu"><div class="title">Kabegamy</div></div>
+      <table  class="menu" cellspacing="10">
+        <tbody>
+          <tr>
+            <td>Home</td>
+            <td>履歴</td>
+            <td>ヘルプ</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <hr class="line1">
+  </div>
+
+  <div class="box-container">
+    <h2 class="message_from_this_service">Create what you want to wear from the bottom of your heart !!</h2>
+
+    <div class="box">
+      <p>レディース>ワンピース</p>
+      <div class="color_box">
+        <div class="color_top">
+          <div class="color_element">カラー＞</div>
+          <div class="color_element"><p><a class=square_btn href="#">カラーマップ</a></p></div>
+          <div class="color_element"><p><a class=square_btn href="#">RGB指定</a></p></div>
+        </div>
+        <div class="color_bottom">
+          <button class="button1" type="submit"></button>
+          <button class="button2" type="submit"></button>
+          <button class="button3" type="submit"></button>
+          <button class="button4" type="submit"></button>
+          <button class="button5" type="submit"></button>
+          <button class="button6" type="submit"></button>
+          <button class="button7" type="submit"></button>
+          <button class="button8" type="submit"></button>
+          <button class="button9" type="submit"></button>
+          <button class="button10" type="submit"></button>
+        </div>
+      </div>
+
+      <div class="cloth_length">
+        <div class="cloth_top">
+          <div class="cloth_element">着丈＞</div>
+          <div class="cloth_element"><p><a class=square_btn href="#">フィッティング早見表</a></p></div>
+        </div>
+        <div class="cloth_botoom">
+          <div class="cloth_element"><p><a class=square_btn href="#">レギュラー丈</a></p></div>
+          <div class="cloth_element"><p><a class=square_btn href="#">ヒップス丈</a></p></div>
+          <div class="cloth_element"><p><a class=square_btn href="#">チュニック丈</a></p></div>
+          <div class="cloth_element"><p><a class=square_btn href="#">ワンピ丈</a></p></div>
+          <div class="cloth_element"><p><a class=square_btn href="#">マキシ丈</a></p></div>
+        </div>
+      </div>
+
+      <div class="design">デザイン＞</div>
+      <div class="collar">襟の形＞</div>
+      <div class="create"><p><a class="square_btn" href="#">生成</a></p></div>
+
+
+
+
+      <p>Hello {{ message }} !!!</p>
+      <ul>
+        <li><a href="{{ url_for('index') }}">home</a></li>
+        <li><a href="{{ url_for('page1') }}">page 1</a></li>
+        <li><a href="{{ url_for('select_color') }}">Select Color Page</a></li>
+        <li><a href="https://qiita.com/ynakayama/items/2cc0b1d3cf1a2da612e4"  target="_blank">Flask入門</a></li>
+      </ul>
+    </div>
+<!-- 以下を追記 -->
+    <div class="box">
+        <img src = "/static/one-piece_white.jpg" width="400" height="400" style="border:solid 1px #ccc;padding:40px 80px;">
+        <p><a class="square_btn" href="#">検索</a></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
