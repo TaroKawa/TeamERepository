@@ -1,5 +1,8 @@
 import os
 import glob
+import argparse
+import numpy as np
+from keras.preprocessing import image
 from keras.preprocessing.image import ImageDataGenerator
 from keras.layers import Input, Flatten, Dense, Dropout
 from keras.applications.vgg16 import VGG16, decode_predictions, preprocess_input
@@ -90,7 +93,41 @@ def train(model, train_gen, eval_gen):
     model.save_weights(save_dir + "finetuning.h5")
 
 
+def classification(weight, model, dir):
+    source_dir = f"../../data/白/{dir}/"
+    classify_dir = "../../data/good_bad/classify/"
+
+    model.load_weights(weight)
+
+    files = os.listdir(source_dir)
+    preds = []
+    for file in files:
+        img = image.load_img(source_dir + file, target_size=(224, 224))
+        x = image.img_to_array(img)
+        x = np.expand_dims(x, axis=0)
+        pred = model.predict(preprocess_input(x))
+        preds.append(pred[0])
+
+    for i, pred in enumerate(preds):
+        if pred[0] >= pred[1]:
+            os.rename(source_dir + files[i],
+                      classify_dir + f"good/w_lgsl_{i}.jpg")
+        elif pred[0] < pred[1]:
+            os.rename(source_dir + files[i],
+                      classify_dir + f"bad/w_lgsl_{i}.jpg")
+
+
 if __name__ == '__main__':
-    train_gen, eval_gen = load_dataset()
-    model = get_model()
-    train(model, train_gen, eval_gen)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--mode", default="train")
+    args = parser.parse_args()
+
+    if args.mode == "train":
+        train_gen, eval_gen = load_dataset()
+        model = get_model()
+        train(model, train_gen, eval_gen)
+    elif args.mode == "classify":
+        dir = "長袖"
+        model = get_model()
+        weight = "weight/finetuning.h5"
+        classification(weight, model, dir)
