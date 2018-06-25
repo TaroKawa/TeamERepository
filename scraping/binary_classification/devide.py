@@ -8,6 +8,8 @@ from keras.layers import Input, Flatten, Dense, Dropout
 from keras.applications.vgg16 import VGG16, decode_predictions, preprocess_input
 from keras.models import Sequential, Model
 from keras.optimizers import Adam, SGD
+from keras.callbacks import ModelCheckpoint
+
 
 
 def load_dataset():
@@ -18,13 +20,12 @@ def load_dataset():
     train_data_dir = "../../data/good_bad/train/"
     eval_data_dir = "../../data/good_bad/eval/"
 
-    batch_size = 16
+    batch_size = 128
     n_epoch = 10
 
     train_data_gen = ImageDataGenerator(
         rescale=1.0 / 255,
-        zoom_range=0.2,
-        horizontal_flip=True
+        horizontal_flip=False
     )
 
     eval_data_gen = ImageDataGenerator(rescale=1.0 / 255)
@@ -45,7 +46,7 @@ def load_dataset():
         color_mode='rgb',
         classes=classes,
         class_mode='categorical',
-        batch_size=16,
+        batch_size=32,
         shuffle=True
     )
 
@@ -58,7 +59,9 @@ def get_model():
 
     top = Sequential()
     top.add(Flatten(input_shape=vgg.output_shape[1:]))
-    top.add(Dense(256, activation="relu"))
+    top.add(Dense(1024, activation="relu"))
+    top.add(Dropout(0.5))
+    top.add(Dense(64, activation="relu"))
     top.add(Dropout(0.5))
     top.add(Dense(2, activation="softmax"))
 
@@ -82,15 +85,19 @@ def train(model, train_gen, eval_gen):
     n_eval = len(os.listdir(eval_dir + "good")) + \
              len(os.listdir(eval_dir + "bad"))
 
+    callbacks = list()
+    callbacks.append(ModelCheckpoint(filepath=f"weight/weight_epoch.h5"))
+
     history = model.fit_generator(
         train_gen,
         samples_per_epoch=n_train,
         nb_epoch=10,
         validation_data=eval_gen,
-        nb_val_samples=n_eval
+        nb_val_samples=n_eval,
+        callbacks=callbacks
     )
 
-    model.save_weights(save_dir + "finetuning.h5")
+    model.save_weights(save_dir + "finetuning_1.h5")
 
 
 def classification(weight, model, dir):
@@ -129,5 +136,5 @@ if __name__ == '__main__':
     elif args.mode == "classify":
         dir = "長袖"
         model = get_model()
-        weight = "weight/finetuning.h5"
+        weight = "weight/finetuning_1.h5"
         classification(weight, model, dir)
