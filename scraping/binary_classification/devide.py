@@ -1,4 +1,5 @@
 import os
+import sys
 import glob
 import argparse
 import numpy as np
@@ -108,6 +109,7 @@ def classification(weight, model, dir):
 
     files = os.listdir(source_dir)
     preds = []
+    counter = 0
     for file in files:
         try:
             img = image.load_img(source_dir + file, target_size=(224, 224))
@@ -117,6 +119,9 @@ def classification(weight, model, dir):
             preds.append(pred[0])
         except:
             files.remove(file)
+        counter += 1
+        percentage = counter / len(files)
+        sys.stdout.write(f"\rFinished {percentage*100:.2f} percent")
 
     for i, pred in enumerate(preds):
         if pred[0] >= pred[1]:
