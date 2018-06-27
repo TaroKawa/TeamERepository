@@ -1,4 +1,5 @@
 import os
+import sys
 import glob
 import argparse
 import numpy as np
@@ -101,27 +102,33 @@ def train(model, train_gen, eval_gen):
 
 
 def classification(weight, model, dir):
-    source_dir = f"../../data/白/{dir}/"
-    classify_dir = "../../data/good_bad/classify/"
+    source_dir = f"{dir}/classify/"
+    classify_dir = f"{dir}/good/"
 
     model.load_weights(weight)
 
     files = os.listdir(source_dir)
     preds = []
+    counter = 0
     for file in files:
-        img = image.load_img(source_dir + file, target_size=(224, 224))
-        x = image.img_to_array(img)
-        x = np.expand_dims(x, axis=0)
-        pred = model.predict(preprocess_input(x))
-        preds.append(pred[0])
+        try:
+            img = image.load_img(source_dir + file, target_size=(224, 224))
+            x = image.img_to_array(img)
+            x = np.expand_dims(x, axis=0)
+            pred = model.predict(preprocess_input(x))
+            preds.append(pred[0])
+        except:
+            files.remove(file)
+        counter += 1
+        percentage = counter / len(files)
+        sys.stdout.write(f"\rFinished {percentage*100:.2f} percent")
 
     for i, pred in enumerate(preds):
         if pred[0] >= pred[1]:
             os.rename(source_dir + files[i],
-                      classify_dir + f"good/w_lgsl_{i}.jpg")
+                      classify_dir + files[i])
         elif pred[0] < pred[1]:
-            os.rename(source_dir + files[i],
-                      classify_dir + f"bad/w_lgsl_{i}.jpg")
+            pass
 
 
 if __name__ == '__main__':
@@ -134,7 +141,7 @@ if __name__ == '__main__':
         model = get_model()
         train(model, train_gen, eval_gen)
     elif args.mode == "classify":
-        dir = "長袖"
+        dir = "/home/arai/zipfiles"
         model = get_model()
         weight = "weight/finetuning_1.h5"
         classification(weight, model, dir)
