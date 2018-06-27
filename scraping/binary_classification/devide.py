@@ -133,7 +133,7 @@ if __name__ == '__main__':
         model = get_model()
         train(model, train_gen, eval_gen)
     elif args.mode == "classify":
-        dir = "/home/arai/zipfiles/"
+        dir = "/home/arai/zipfiles"
         model = get_model()
         weight = "weight/finetuning_1.h5"
         classification(weight, model, dir)
