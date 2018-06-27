@@ -109,11 +109,14 @@ def classification(weight, model, dir):
     files = os.listdir(source_dir)
     preds = []
     for file in files:
-        img = image.load_img(source_dir + file, target_size=(224, 224))
-        x = image.img_to_array(img)
-        x = np.expand_dims(x, axis=0)
-        pred = model.predict(preprocess_input(x))
-        preds.append(pred[0])
+        try:
+            img = image.load_img(source_dir + file, target_size=(224, 224))
+            x = image.img_to_array(img)
+            x = np.expand_dims(x, axis=0)
+            pred = model.predict(preprocess_input(x))
+            preds.append(pred[0])
+        except:
+            files.remove(file)
 
     for i, pred in enumerate(preds):
         if pred[0] >= pred[1]:
