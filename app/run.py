@@ -7,7 +7,23 @@ print ("test4 Post works!")
 
 @app.route('/')
 def index():
-    return render_template('index.html', message="こんにちは")
+    # return render_template('index.html', message="こんにちは")
+    return render_template('index_no_modal.html', message="こんにちは")
+
+@app.route("/selecting_color_black",methods=['POST'])
+def selecting_color_black():
+    black= request.form["black"]
+    print("your color selection is:")
+    print(black)
+    return render_template('index_no_modal.html')
+
+@app.route("/selecting_color_white",methods=['POST'])
+def selecting_color_white():
+    white= request.form["white"]
+    print("your color selection is:")
+    print(white)
+    return render_template('index_no_modal.html')
+
 @app.route("/page1")
 def page1():
     return render_template('page1.html')
