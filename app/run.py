@@ -10,18 +10,23 @@ def index():
     # return render_template('index.html', message="こんにちは")
     return render_template('index_no_modal.html', message="こんにちは")
 
-@app.route("/selecting_color_black",methods=['POST'])
-def selecting_color_black():
-    black= request.form["black"]
-    print("your color selection is:")
-    print(black)
-    return render_template('index_no_modal.html')
+@app.route("/selecting_color",methods=['POST'])
+def selecting_color():
+    color=request.form.getlist("fav")
 
-@app.route("/selecting_color_white",methods=['POST'])
-def selecting_color_white():
-    white= request.form["white"]
-    print("your color selection is:")
-    print(white)
+    regular= request.form["regular"]
+    hips= request.form["hips"]
+    tunic= request.form["tunic"]
+    wanpi= request.form["wanpi"]
+    maxi= request.form["wanpi"]
+
+    print("color:::::::::::::::::::::::::::",color)
+    print("regular",regular)
+    print("hips",hips)
+    print("tunic",tunic)
+    print("wanpi",wanpi)
+    print("maxi",maxi)
+
     return render_template('index_no_modal.html')
 
 @app.route("/page1")

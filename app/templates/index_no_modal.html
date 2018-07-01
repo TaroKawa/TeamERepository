@@ -34,18 +34,27 @@
           <div class="color_element"><p><a class=square_btn href="#">RGB指定</a></p></div>
         </div>
         <div class="color_bottom">
-	<form action="./selecting_color_black" method="POST">
-          <button class="button1" name="black" value="1" type="submit"></button>
-          <button class="button2" name="white" value="2" type="submit"></button>
-          <button class="button3" name="blue" value="3" type="submit"></button>
-          <button class="button4" name="dark blue" value="4"type="submit"></button>
-          <button class="button5" name="pure green" value ="5"type="submit"></button>
-          <button class="button6" name="green"value="6" type="submit"></button>
-          <button class="button7" name="yellow" value="7" type="submit"></button>
-          <button class="button8" name="red" value="8" type="submit"></button>
-          <button class="button9" name="purple" value="9" type="submit"></button>
-          <button class="button10" name="dark purple" value="10"type="submit"></button>
-	</form>
+	<form action="./selecting_color" method="POST">
+          <button class="button1" name="color" type="button"></button>
+          <button class="button2" name="color" type="button"></button>
+          <button class="button3" name="color" type="button"></button>
+          <button class="button4" name="color" type="button"></button>
+          <button class="button5" name="color" type="button"></button>
+          <button class="button6" name="color" type="button"></button>
+          <button class="button7" name="color" type="button"></button>
+          <button class="button8" name="color" type="button"></button>
+          <button class="button9" name="color" type="button"></button>
+	<br>
+	<label> <input type="checkbox" name="fav" value=1> </label>
+	<label> <input type="checkbox" name="fav" value=2> </label>
+	<label> <input type="checkbox" name="fav" value=3> </label>
+	<label> <input type="checkbox" name="fav" value=4> </label>
+	<label> <input type="checkbox" name="fav" value=5> </label>
+	<label> <input type="checkbox" name="fav" value=6> </label>
+	<label> <input type="checkbox" name="fav" value=7> </label>
+	<label> <input type="checkbox" name="fav" value=8> </label>
+	<label> <input type="checkbox" name="fav" value=9> </label>
+	</br>
         </div>
       </div>
 
@@ -54,23 +63,31 @@
           <div class="cloth_element">着丈＞</div>
           <div class="cloth_element"><p><a class=square_btn href="#">フィッティング早見表</a></p></div>
         </div>
+
         <div class="cloth_botoom">
+		
+		<div class="cloth_element"><p><a><input type="text" name="regular" placeholder="レギュラー丈"></a></p></div>
+		<div class="cloth_element"><p><a><input type="text" name="hips" placeholder="ヒップス丈"></a></p></div>
+		<div class="cloth_element"><p><a><input type="text" name="tunic" placeholder="チュニック丈"></a></p></div>
+		<div class="cloth_element"><p><a><input type="text" name="wanpi" placeholder="ワンピ丈"></a></p></div>
+		<div class="cloth_element"><p><a><input type="text" name="maxi" placeholder="マキシ丈"></a></p></div>
+		<!---
           <div class="cloth_element"><p><a class=square_btn href="#">レギュラー丈</a></p></div>
           <div class="cloth_element"><p><a class=square_btn href="#">ヒップス丈</a></p></div>
           <div class="cloth_element"><p><a class=square_btn href="#">チュニック丈</a></p></div>
           <div class="cloth_element"><p><a class=square_btn href="#">ワンピ丈</a></p></div>
           <div class="cloth_element"><p><a class=square_btn href="#">マキシ丈</a></p></div>
         </div>
+	--->
+
       </div>
 
       <div class="design">デザイン＞</div>
       <div class="collar">襟の形＞</div>
-      <div class="create"><p><a class="square_btn" href="#">生成</a></p></div>
+      <!--<div class="create"><p><a class="square_btn" href="#">生成</a></p></div>-->
+          <input type ="submit" class="create" value="生成" ></button>
+	</form>
 
-
-
-
-      <p>Hello {{ message }} !!!</p>
       <ul>
         <li><a href="{{ url_for('index') }}">home</a></li>
         <li><a href="{{ url_for('page1') }}">page 1</a></li>
