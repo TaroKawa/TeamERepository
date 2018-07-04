@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <link rel="Stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="../static/modal.css">
+    <script type="text/javascript" src="../static/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../static/modal.js"></script>
     <title>home</title>
 </head>
 <body>
@@ -65,7 +68,7 @@
         </div>
 
         <div class="cloth_botoom">
-		
+
 		<div class="cloth_element"><p><a><input type="text" name="regular" placeholder="レギュラー丈"></a></p></div>
 		<div class="cloth_element"><p><a><input type="text" name="hips" placeholder="ヒップス丈"></a></p></div>
 		<div class="cloth_element"><p><a><input type="text" name="tunic" placeholder="チュニック丈"></a></p></div>
@@ -98,9 +101,17 @@
 <!-- 以下を追記 -->
     <div class="box">
         <img src = "/static/one-piece_white.jpg" width="400" height="400" style="border:solid 1px #ccc;padding:40px 80px;">
-        <p><a class="square_btn" href="#">検索</a></p>
+        <p><a class="square_btn" href="#" id="modal_open">検索</a></p>
       </div>
     </div>
   </div>
+  <div class="modal-content">
+      <div class="modal-content-inner">
+          <p class="modal-title">This is a demo modal window</p>
+          <input type="button" name="close" value="close" class="modal-close">
+      </div>
+  </div>
+
+  <div id="modal-overlay" class="modal-close"></div>
 </body>
 </html>
