@@ -12,35 +12,53 @@ class FashionDataset(data_utils.Dataset):
         root (str): path of root dir of dataset
     """
 
-    def __init__(self, root, train=True, transform=None, target_transform=None):
+    def __init__(self, root, transform=None, target_transform=None):
         self.root = root
-        if train:
-            self.im_paths = glob.glob(os.path.join(self.root, 'train', 'good') + '/*')
-        else:
-            self.im_paths = glob.glob(os.path.join(self.root, 'eval', 'good') + '/*')
+        self.im_paths = glob.glob(os.path.join(self.root) + '/*')
         self.transform = transform
         self.target_transform = target_transform
 
         self.labels = []
         for im_path in self.im_paths:
-            color = im_path.split('/')[-1][0]
-            if color == 'b':
+            color = im_path.split('/')[-1].split('_')[0]
+            if color == 'オレンジ':
                 self.labels.append(0)
-            elif color == 'g':
+            elif color == '黄色':
                 self.labels.append(1)
-            elif color == 'k':
+            elif color == '灰色':
                 self.labels.append(2)
-            elif color == 'p':
+            elif color == '紅' or color == '赤':
                 self.labels.append(3)
-            elif color == 'w':
+            elif color == '黒':
                 self.labels.append(4)
-            elif color == 'y':
+            elif color == '黒白':
                 self.labels.append(5)
-            else:
+            elif color == '紫':
                 self.labels.append(6)
+            elif color == '水色':
+                self.labels.append(7)
+            elif color == '青':
+                self.labels.append(8)
+            elif color == '青緑色':
+                self.labels.append(9)
+            elif color == '茶色':
+                self.labels.append(10)
+            elif color == '桃色':
+                self.labels.append(11)
+            elif color == '白':
+                self.labels.append(12)
+            elif color == '緑':
+                self.labels.append(13)
+            elif color == '黄緑':
+                self.labels.append(14)
+            else:
+                print(color)
 
     def __getitem__(self, idx):
         img = Image.open(self.im_paths[idx])
+        if img.mode != 'RGB':
+            img = img.convert('RGB')
+
         label = self.labels[idx]
 
         if self.transform is not None:

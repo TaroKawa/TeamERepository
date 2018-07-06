@@ -17,6 +17,7 @@ from dataset import FashionDataset
 parser = argparse.ArgumentParser(description='VAE Fashion MNIST Example')
 parser.add_argument('data_dir', type=str, default='data',
                     help='path of data directory')
+parser.add_argument('--num_classes', type=int, default=15)
 parser.add_argument('--batch-size', type=int, default=100, metavar='N',
                     help='input batch size for training (default: 100)')
 parser.add_argument('--epochs', type=int, default=100, metavar='N',
@@ -38,12 +39,10 @@ class TargetTrans():
         pass
 
     def __call__(self, y):
-        return np.eye(7)[y]
+        return np.eye(args.num_classes)[y]
 
 train_dataset = FashionDataset(args.data_dir, transform=trans, target_transform=TargetTrans())
 train_loader = data_utils.DataLoader(train_dataset, args.batch_size, shuffle=True, num_workers=1)
-test_dataset = FashionDataset(args.data_dir, transform = trans, target_transform=TargetTrans(), train=False)
-test_loader = data_utils.DataLoader(test_dataset, args.batch_size, shuffle=False, num_workers=1)
 
 # define the network
 def decode_unit(input_features, output_features):
@@ -61,21 +60,21 @@ class CVAE(nn.Module):
         super(CVAE, self).__init__()
         self.nf = nf
 
-        self.conv1 = encode_unit(10, nf)
+        self.conv1 = encode_unit(3 + args.num_classes, nf)
         self.conv2 = encode_unit(nf, 2 * nf)
         self.conv3 = encode_unit(2 * nf, 4 * nf) 
         self.conv4 = encode_unit(4 * nf, 8 * nf)
         self.fc1 = nn.Linear(4 * 4 * 8 * nf, 100)
         self.fc2 = nn.Linear(4 * 4 * 8 * nf, 100)
 
-        self.project = nn.Linear(107, 4*4*8*nf , bias=False)
+        self.project = nn.Linear(100 + args.num_classes, 4*4*8*nf , bias=False)
         self.dconv4 = decode_unit(8 * nf, 4 * nf)
         self.dconv3 = decode_unit(4 * nf, 2 * nf)
         self.dconv2 = decode_unit(2 * nf, nf)
         self.dconv1 = decode_unit(nf, 3)
 
     def encode(self, x, y):
-        y = y.repeat(1,64*64).view(y.size(0), 7, 64, 64)
+        y = y.repeat(1,64*64).view(y.size(0), args.num_classes, 64, 64)
         x = torch.cat((x, y), 1)
         h = self.conv1(x)
         h = self.conv2(h)
@@ -151,7 +150,7 @@ def train(epoch):
     print('====> Epoch: {} Average loss: {:.4f}'.format(
           epoch, train_loss / len(train_loader.dataset)))
 
-
+'''
 def test(epoch):
     model.eval()
     test_loss = 0
@@ -170,17 +169,16 @@ def test(epoch):
 
     test_loss /= len(test_loader.dataset)
     print('====> Test set loss: {:.4f}'.format(test_loss))
-
+'''
 
 for epoch in range(1, args.epochs + 1):
     if not os.path.exists(args.result):
         os.mkdir(args.result)
     train(epoch)
-    test(epoch)
-    #with torch.no_grad():
+    #test(epoch)
     sample = Variable(torch.randn(64, 100).cuda())
     trans = TargetTrans()
-    for i in range(7):
+    for i in range(args.num_classes):
         y = trans(i)
         y = torch.FloatTensor(y)
         y = y.repeat(64, 1).cuda()
