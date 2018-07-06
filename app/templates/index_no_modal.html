@@ -38,6 +38,7 @@
         </div>
         <div class="color_bottom">
 	<form action="./selecting_color" method="POST">
+		<!-- todo change color button -->
           <button class="button1" name="color" type="button"></button>
           <button class="button2" name="color" type="button"></button>
           <button class="button3" name="color" type="button"></button>
@@ -48,6 +49,7 @@
           <button class="button8" name="color" type="button"></button>
           <button class="button9" name="color" type="button"></button>
 	<br>
+	<label> <input type="checkbox" name="fav" value=0> </label>
 	<label> <input type="checkbox" name="fav" value=1> </label>
 	<label> <input type="checkbox" name="fav" value=2> </label>
 	<label> <input type="checkbox" name="fav" value=3> </label>
@@ -56,7 +58,6 @@
 	<label> <input type="checkbox" name="fav" value=6> </label>
 	<label> <input type="checkbox" name="fav" value=7> </label>
 	<label> <input type="checkbox" name="fav" value=8> </label>
-	<label> <input type="checkbox" name="fav" value=9> </label>
 	</br>
         </div>
       </div>
@@ -100,7 +101,8 @@
     </div>
 <!-- 以下を追記 -->
     <div class="box">
-        <img src = "/static/one-piece_white.jpg" width="400" height="400" style="border:solid 1px #ccc;padding:40px 80px;">
+	    <p> {{image_from_post}}</p>
+	    <img src = "{{image_from_post}}" alt="" width="400" height="400" style="border:solid 1px #ccc;padding:40px 80px;">
         <p><a class="square_btn" href="#" id="modal_open">検索</a></p>
       </div>
     </div>

@@ -27,7 +27,12 @@ def selecting_color():
     print("wanpi",wanpi)
     print("maxi",maxi)
 
-    return render_template('index_no_modal.html')
+    # create and save image funciton
+
+
+    image_directory="/static/clothes.jpg"
+
+    return render_template('index_no_modal.html',image_from_post=image_directory)
 
 @app.route("/page1")
 def page1():
