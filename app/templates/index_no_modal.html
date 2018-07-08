@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <link rel="Stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="../static/modal.css">
+    <script type="text/javascript" src="../static/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../static/modal.js"></script>
     <title>home</title>
 </head>
 <body>
@@ -26,62 +29,89 @@
     <h2 class="message_from_this_service">Create what you want to wear from the bottom of your heart !!</h2>
 
     <div class="box">
-      <p>レディース>ワンピース</p>
+	    <!--<p>レディース>ワンピース</p>-->
+	    <p>ワンピース＞</p>
       <div class="color_box">
         <div class="color_top">
           <div class="color_element">カラー＞</div>
-          <div class="color_element"><p><a class=square_btn href="#">カラーマップ</a></p></div>
+<!--          <div class="color_element"><p><a class=square_btn href="#">カラーマップ</a></p></div>
           <div class="color_element"><p><a class=square_btn href="#">RGB指定</a></p></div>
+-->
         </div>
         <div class="color_bottom">
-          <button class="button1" type="submit"></button>
-          <button class="button2" type="submit"></button>
-          <button class="button3" type="submit"></button>
-          <button class="button4" type="submit"></button>
-          <button class="button5" type="submit"></button>
-          <button class="button6" type="submit"></button>
-          <button class="button7" type="submit"></button>
-          <button class="button8" type="submit"></button>
-          <button class="button9" type="submit"></button>
-          <button class="button10" type="submit"></button>
+	<form action="./selecting_color" method="POST">
+		<!-- todo change color button -->
+          <button class="button1" name="color" type="button"></button>
+          <button class="button2" name="color" type="button"></button>
+          <button class="button3" name="color" type="button"></button>
+          <button class="button4" name="color" type="button"></button>
+          <button class="button5" name="color" type="button"></button>
+          <button class="button6" name="color" type="button"></button>
+          <button class="button7" name="color" type="button"></button>
+          <button class="button8" name="color" type="button"></button>
+          <button class="button9" name="color" type="button"></button>
+	<br>
+	<label> <input type="checkbox" name="fav" value=0> </label>
+	<label> <input type="checkbox" name="fav" value=1> </label>
+	<label> <input type="checkbox" name="fav" value=2> </label>
+	<label> <input type="checkbox" name="fav" value=3> </label>
+	<label> <input type="checkbox" name="fav" value=4> </label>
+	<label> <input type="checkbox" name="fav" value=5> </label>
+	<label> <input type="checkbox" name="fav" value=6> </label>
+	<label> <input type="checkbox" name="fav" value=7> </label>
+	<label> <input type="checkbox" name="fav" value=8> </label>
+	</br>
         </div>
       </div>
 
+      <br></br>
       <div class="cloth_length">
         <div class="cloth_top">
           <div class="cloth_element">着丈＞</div>
-          <div class="cloth_element"><p><a class=square_btn href="#">フィッティング早見表</a></p></div>
+  <!--        <div class="cloth_element"><p><a class=square_btn href="#">フィッティング早見表</a></p></div>
+  -->
         </div>
+
         <div class="cloth_botoom">
-          <div class="cloth_element"><p><a class=square_btn href="#">レギュラー丈</a></p></div>
-          <div class="cloth_element"><p><a class=square_btn href="#">ヒップス丈</a></p></div>
-          <div class="cloth_element"><p><a class=square_btn href="#">チュニック丈</a></p></div>
-          <div class="cloth_element"><p><a class=square_btn href="#">ワンピ丈</a></p></div>
-          <div class="cloth_element"><p><a class=square_btn href="#">マキシ丈</a></p></div>
-        </div>
+
+		<div class="cloth_element"><p><a><input type="text" name="regular" placeholder="レギュラー丈"></a></p></div>
+		<div class="cloth_element"><p><a><input type="text" name="hips" placeholder="ヒップス丈"></a></p></div>
+		<div class="cloth_element"><p><a><input type="text" name="tunic" placeholder="チュニック丈"></a></p></div>
+		<div class="cloth_element"><p><a><input type="text" name="wanpi" placeholder="ワンピ丈"></a></p></div>
+		<div class="cloth_element"><p><a><input type="text" name="maxi" placeholder="マキシ丈"></a></p></div>
+
       </div>
 
-      <div class="design">デザイン＞</div>
+      <!--<div class="design">デザイン＞</div>
       <div class="collar">襟の形＞</div>
-      <div class="create"><p><a class="square_btn" href="#">生成</a></p></div>
+      -->
 
+      <!--<div class="create"><p><a class="square_btn" href="#">生成</a></p></div>-->
+          <input type ="submit" class="create" value="生成" ></button>
+	</form>
 
-
-
-      <p>Hello {{ message }} !!!</p>
-      <ul>
+<!--      <ul>
         <li><a href="{{ url_for('index') }}">home</a></li>
         <li><a href="{{ url_for('page1') }}">page 1</a></li>
         <li><a href="{{ url_for('select_color') }}">Select Color Page</a></li>
         <li><a href="https://qiita.com/ynakayama/items/2cc0b1d3cf1a2da612e4"  target="_blank">Flask入門</a></li>
       </ul>
+-->
     </div>
 <!-- 以下を追記 -->
     <div class="box">
-        <img src = "/static/one-piece_white.jpg" width="400" height="400" style="border:solid 1px #ccc;padding:40px 80px;">
-        <p><a class="square_btn" href="#">検索</a></p>
+	    <img src = "{{image_from_post}}" alt="" width="400" height="400" style="border:solid 1px #ccc;padding:40px 80px;">
+        <p><a class="square_btn" href="#" id="modal_open">検索</a></p>
       </div>
     </div>
   </div>
+  <div class="modal-content">
+      <div class="modal-content-inner">
+          <p class="modal-title">This is a demo modal window</p>
+          <input type="button" name="close" value="close" class="modal-close">
+      </div>
+  </div>
+
+  <div id="modal-overlay" class="modal-close"></div>
 </body>
 </html>

@@ -1,7 +1,6 @@
 
 $(document).ready(function () {
-  alert("Hey");
-  $("#modal_open").click(function () {
+    $("#modal_open").click(function () {
     $(this).blur();
 
     $("#modal-overlay").fadeIn("slow");
