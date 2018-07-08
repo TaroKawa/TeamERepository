@@ -1,5 +1,6 @@
 body{
-  background-color:#ff0000;
+ /* background-color:#ff0000;*/
+ background-color:white;
 
 }
 
@@ -213,6 +214,10 @@ button.button10 {
 button.button10:hover {
     color: #fff;
 }
+input.checkbox1{
+
+}
+
 
 
 /*ポップアップ用*/

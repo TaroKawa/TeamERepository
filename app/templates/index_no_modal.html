@@ -29,12 +29,14 @@
     <h2 class="message_from_this_service">Create what you want to wear from the bottom of your heart !!</h2>
 
     <div class="box">
-      <p>レディース>ワンピース</p>
+	    <!--<p>レディース>ワンピース</p>-->
+	    <p>ワンピース＞</p>
       <div class="color_box">
         <div class="color_top">
           <div class="color_element">カラー＞</div>
-          <div class="color_element"><p><a class=square_btn href="#">カラーマップ</a></p></div>
+<!--          <div class="color_element"><p><a class=square_btn href="#">カラーマップ</a></p></div>
           <div class="color_element"><p><a class=square_btn href="#">RGB指定</a></p></div>
+-->
         </div>
         <div class="color_bottom">
 	<form action="./selecting_color" method="POST">
@@ -62,10 +64,12 @@
         </div>
       </div>
 
+      <br></br>
       <div class="cloth_length">
         <div class="cloth_top">
           <div class="cloth_element">着丈＞</div>
-          <div class="cloth_element"><p><a class=square_btn href="#">フィッティング早見表</a></p></div>
+  <!--        <div class="cloth_element"><p><a class=square_btn href="#">フィッティング早見表</a></p></div>
+  -->
         </div>
 
         <div class="cloth_botoom">
@@ -75,33 +79,27 @@
 		<div class="cloth_element"><p><a><input type="text" name="tunic" placeholder="チュニック丈"></a></p></div>
 		<div class="cloth_element"><p><a><input type="text" name="wanpi" placeholder="ワンピ丈"></a></p></div>
 		<div class="cloth_element"><p><a><input type="text" name="maxi" placeholder="マキシ丈"></a></p></div>
-		<!---
-          <div class="cloth_element"><p><a class=square_btn href="#">レギュラー丈</a></p></div>
-          <div class="cloth_element"><p><a class=square_btn href="#">ヒップス丈</a></p></div>
-          <div class="cloth_element"><p><a class=square_btn href="#">チュニック丈</a></p></div>
-          <div class="cloth_element"><p><a class=square_btn href="#">ワンピ丈</a></p></div>
-          <div class="cloth_element"><p><a class=square_btn href="#">マキシ丈</a></p></div>
-        </div>
-	--->
 
       </div>
 
-      <div class="design">デザイン＞</div>
+      <!--<div class="design">デザイン＞</div>
       <div class="collar">襟の形＞</div>
+      -->
+
       <!--<div class="create"><p><a class="square_btn" href="#">生成</a></p></div>-->
           <input type ="submit" class="create" value="生成" ></button>
 	</form>
 
-      <ul>
+<!--      <ul>
         <li><a href="{{ url_for('index') }}">home</a></li>
         <li><a href="{{ url_for('page1') }}">page 1</a></li>
         <li><a href="{{ url_for('select_color') }}">Select Color Page</a></li>
         <li><a href="https://qiita.com/ynakayama/items/2cc0b1d3cf1a2da612e4"  target="_blank">Flask入門</a></li>
       </ul>
+-->
     </div>
 <!-- 以下を追記 -->
     <div class="box">
-	    <p> {{image_from_post}}</p>
 	    <img src = "{{image_from_post}}" alt="" width="400" height="400" style="border:solid 1px #ccc;padding:40px 80px;">
         <p><a class="square_btn" href="#" id="modal_open">検索</a></p>
       </div>
