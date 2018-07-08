@@ -1,5 +1,5 @@
 body{
-  background-color:#ff0000;
+  background-color:#fcfcfc;
 
 }
 
@@ -12,7 +12,7 @@ div.box_menu{
 }
 div.header{
   overflow: hidden;
-  background-color:#ffffff;
+  background-color:#fccccc;
 
 }
 
@@ -45,6 +45,7 @@ div.cloth_element{
 div.box{
   display: inline-block;
   padding: 20px;
+  float: left;
 }
 div.box-container{
   overflow: hidden;
@@ -212,6 +213,12 @@ button.button10 {
 
 button.button10:hover {
     color: #fff;
+}
+
+.img-pos {
+  position: absolute;
+  top: 150px;
+  left: 450px;
 }
 
 
