@@ -2,6 +2,8 @@ from flask import Flask, render_template
 # GETパラメーターを取得するために、requestを追加する
 from flask import request
 
+from utils import generate_save_image
+
 app = Flask(__name__)
 print ("test4 Post works!")
 
@@ -28,7 +30,7 @@ def selecting_color():
     print("maxi",maxi)
 
     # create and save image funciton
-
+    generate(color, 'static')
 
     image_directory="/static/clothes.jpg"
 
