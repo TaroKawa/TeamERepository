@@ -3,9 +3,14 @@ body{
 
 }
 
+@font-face {
+  font-family: MyCursive;
+  src: url();
+}
+
 
 h2.message_from_this_service{
-  font-family:SimSun;
+  font-family: 'Markazi Text', serif;
 }
 div.box_menu{
 	margin:0px auto;
@@ -20,12 +25,13 @@ div.header{
 
 .title {
   font-weight:bold;
-  font-size: 24px;
-  font-family:cursive;
+  font-size: 42px;
+  font-family: 'Dancing Script', cursive;
 }
 
 .menu {
   font-size: 20pt;
+  font-family: 'Markazi Text', serif;
   float: right;
   border-style:hidden;
 }
