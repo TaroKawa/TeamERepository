@@ -15,7 +15,7 @@ def d_conv_unit(input_features, output_features):
     return conv_unit
 
 class Discriminator(nn.Module):
-    
+
     def __init__(self, num_classes, ndf=128):
         super(Discriminator, self).__init__()
 
@@ -30,7 +30,8 @@ class Discriminator(nn.Module):
 
     def forward(self, x, y):
         n = x.size()[0]
-        y = y.repeat(1,64*64).view(y.size(0), args.num_classes, 64, 64)
+        x = x.float()
+        y = y.repeat(1,64*64).view(y.size(0), self.num_classes, 64, 64).float()
         x = torch.cat((x, y), 1)
         x = self.conv1(x)
         x = self.conv2(x)
@@ -44,7 +45,7 @@ class Discriminator(nn.Module):
         return x
 
 class Generator(nn.Module):
-    
+
     def __init__(self, num_classes, input_dim=100, ngf=128):
         super(Generator, self).__init__()
         self.num_classes = num_classes
@@ -56,17 +57,18 @@ class Generator(nn.Module):
         self.conv1 = g_conv_unit(ngf * 8, ngf * 4)
         self.conv2 = g_conv_unit(ngf * 4, ngf * 2)
         self.conv3 = g_conv_unit(ngf * 2, ngf)
-        self.conv4 = nn.ConvTranspose2d(ngf, 1, 4, stride=2, padding=1)
-        
+        self.conv4 = nn.ConvTranspose2d(ngf, 3, 4, stride=2, padding=1)
+
     def forward(self, z, y):
         n = z.size()[0]
+        z = z.float()
+        y = y.float()
         z = torch.cat((z, y), 1)
-        x = F.relu(self.batch_norm1d(self.project(x)))
-        x = x.view((n, self.ngf*4, 4, 4))
-        x = self.conv1(x)
-        x = self.conv2(x)
-        x = self.conv3(x)
-        x = self.conv4(x)
-        x = F.tanh(x)
-
-        return x
+        z = F.relu(self.batch_norm1d(self.project(z))) ###may be not self.project(x)
+        z = z.view((n, self.ngf*8, 4, 4)) #changed self.ngf*4 to self.ngf*8
+        z = self.conv1(z)
+        z = self.conv2(z)
+        z = self.conv3(z)
+        z = self.conv4(z)
+        z = F.tanh(z)
+        return z
