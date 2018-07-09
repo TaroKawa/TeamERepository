@@ -3,10 +3,10 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <link rel="Stylesheet" href="/static/style.css">
-    <link rel="stylesheet" href="../static/modal.css">
-    <script type="text/javascript" src="../static/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="../static/modal.js"></script>
+    <link rel="Stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="static/modal.css">
+    <script type="text/javascript" src="static/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="static/modal.js"></script>
     <title>home</title>
 </head>
 <body>
@@ -90,22 +90,14 @@
 
           <input type ="submit" class="create" value="生成" ></button>
 	</form>
-
-<!--      <ul>
-        <li><a href="{{ url_for('index') }}">home</a></li>
-        <li><a href="{{ url_for('page1') }}">page 1</a></li>
-        <li><a href="{{ url_for('select_color') }}">Select Color Page</a></li>
-        <li><a href="https://qiita.com/ynakayama/items/2cc0b1d3cf1a2da612e4"  target="_blank">Flask入門</a></li>
-      </ul>
--->
     </div>
 <!-- 以下を追記 -->
 <br></br>
     </div>
-    
+
     <!--999999999999999999999999999999999999999999999999999999999999-->
     <div class="box">
-	    <img src = "{{image_from_post}}" alt="" width="400" height="400" style="border:solid 1px #ccc;padding:40px 80px;">
+        <img src = "/static/one-piece_white.jpg" width="200" height="200" style="border:solid 1px #ccc;padding:40px 80px;" alt="" class="img-pos">
         <p><a class="square_btn" href="#" id="modal_open">検索</a></p>
       </div>
     </div>
@@ -113,6 +105,7 @@
   <div class="modal-content">
       <div class="modal-content-inner">
           <p class="modal-title">This is a demo modal window</p>
+          <a href="{{ response }}"><input type="button" name="recommend" value="商品ページへ"></a>
           <input type="button" name="close" value="close" class="modal-close">
       </div>
   </div>

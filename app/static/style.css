@@ -1,6 +1,5 @@
 body{
- /* background-color:#ff0000;*/
- background-color:white;
+  background-color:#fcfcfc;
 
 }
 
@@ -14,7 +13,7 @@ div.box_menu{
 }
 div.header{
   overflow: hidden;
-  background-color:#ffffff;
+  background-color:#fccccc;
 
 }
 
@@ -49,6 +48,7 @@ div.box{
 	margin:0px auto;
   display: inline-block;
   padding: 20px;
+  float: left;
 }
 div.box-container{
 	margin:0px auto;
@@ -320,6 +320,12 @@ div.cloth_botoom{
 	display:block;
 	/*display: inline-block;*/
 	text-align:center;
+}
+
+.img-pos {
+  position: absolute;
+  top: 150px;
+  left: 450px;
 }
 
 
