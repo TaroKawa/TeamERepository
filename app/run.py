@@ -30,7 +30,7 @@ def selecting_color():
     print("maxi",maxi)
 
     # create and save image funciton
-    generate(color, 'static')
+    generate_save_image(color, 'static')
 
     image_directory="/static/clothes.jpg"
 
