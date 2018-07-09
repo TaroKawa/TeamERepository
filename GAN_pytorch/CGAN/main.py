@@ -117,7 +117,7 @@ for i in tqdm(range(args.epochs)):
 
         z = Variable(generate_z(args.batch_size).cuda())
 
-        g_loss = - criterion(1 - D(G(z, y),y), target)
+        g_loss =  criterion(D(G(z, y),y), target)
         running_g_loss += g_loss * args.batch_size
         g_loss.backward()
         g_optimizer.step()
@@ -137,7 +137,8 @@ for i in tqdm(range(args.epochs)):
     print('epoch: {}'.format(i+1), flush=True)
     print('real acc: {}'.format(running_d_true), flush=True)
     print('fake acc: {}'.format(running_d_fake), flush=True)
-    generated_img = G(Variable(torch.rand((100, 100)).cuda()),y).cpu()  #25,100,  25,32,32
+    generated_img = G(generate_z(args.batch_size).cuda(),y).cpu()  #25,100,  25,32,32
+    print(generated_img.shape)
     if (i+1) % 5 == 0:
         save_image(generated_img.cpu(),args.output_dir+'/sample_'+str(i)+'.png')
 		# save model weights
