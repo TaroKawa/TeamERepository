@@ -2,12 +2,40 @@ from flask import Flask, render_template
 # GETパラメーターを取得するために、requestを追加する
 from flask import request
 
+from utils import generate_save_image
+
 app = Flask(__name__)
 print ("test4 Post works!")
 
 @app.route('/')
 def index():
-    return render_template('index.html', message="こんにちは")
+    # return render_template('index.html', message="こんにちは")
+    return render_template('index_no_modal.html', message="こんにちは")
+
+@app.route("/selecting_color",methods=['POST'])
+def selecting_color():
+    color=request.form.getlist("fav")
+
+    regular= request.form["regular"]
+    hips= request.form["hips"]
+    tunic= request.form["tunic"]
+    wanpi= request.form["wanpi"]
+    maxi= request.form["wanpi"]
+
+    print("color:::::::::::::::::::::::::::",color)
+    print("regular",regular)
+    print("hips",hips)
+    print("tunic",tunic)
+    print("wanpi",wanpi)
+    print("maxi",maxi)
+
+    # create and save image funciton
+    generate_save_image(color, 'static')
+
+    image_directory="/static/clothes.jpg"
+
+    return render_template('index_no_modal.html',image_from_post=image_directory)
+
 @app.route("/page1")
 def page1():
     return render_template('page1.html')

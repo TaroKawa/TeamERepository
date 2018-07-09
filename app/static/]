@@ -1,37 +1,31 @@
 body{
-  background-color:#fcfcfc;
+ /* background-color:#ff0000;*/
+ background-color:white;
 
-}
-
-@font-face {
-  font-family: MyCursive;
-  src: url();
 }
 
 
 h2.message_from_this_service{
-  font-family: 'Markazi Text', serif;
+  font-family:SimSun;
 }
 div.box_menu{
-	margin:0px auto;
   display: inline-block;
 }
 div.header{
   overflow: hidden;
-  background-color:#fccccc;
+  background-color:#ffffff;
 
 }
 
 
 .title {
   font-weight:bold;
-  font-size: 42px;
-  font-family: 'Dancing Script', cursive;
+  font-size: 24px;
+  font-family:cursive;
 }
 
 .menu {
   font-size: 20pt;
-  font-family: 'Markazi Text', serif;
   float: right;
   border-style:hidden;
 }
@@ -43,7 +37,6 @@ hr.line1 {
 div.color_element{
   display: inline-block;
   padding-right: 20px;
-  text-align:center;
 }
 
 div.cloth_element{
@@ -51,13 +44,10 @@ div.cloth_element{
   padding-right: 20px;
 }
 div.box{
-	margin:0px auto;
   display: inline-block;
   padding: 20px;
-  float: left;
 }
 div.box-container{
-	margin:0px auto;
   overflow: hidden;
 }
 div.image_created{
@@ -74,11 +64,6 @@ div.image_created{
 
 #line{
   color: #EEEEEE;
-}
-input.create{
-	width:80px;
-	height:40px;
-	text-align:center;
 }
 .square_btn{
     display: inline-block;
@@ -291,47 +276,9 @@ input.checkbox9{
 
 }
 
-
 input.cloth_element1{
-	vertical-align:middle;
-	width:100px;
-	text-align:center;
-}
-
-input.cloth_element2{
-	vertical-align:middle;
-	width:100px;
-	text-align:center;
-}
-
-input.cloth_element3{
-	vertical-align:middle;
-	width:100px;
-	text-align:center;
-}
-
-input.cloth_element4{
-	vertical-align:middle;
-	width:100px;
-	text-align:center;
-}
-input.cloth_element5{
-	vertical-align:middle;
-	width:100px;
-	text-align:center;
-}
-
-div.cloth_botoom{
-
-	display:block;
-	/*display: inline-block;*/
-	text-align:center;
-}
-
-.img-pos {
-  position: absolute;
-  top: 150px;
-  left: 450px;
+	size:20px;
+	width=40px;
 }
 
 
