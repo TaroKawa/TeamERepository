@@ -16,18 +16,18 @@ def index():
 def selecting_color():
     color=request.form.getlist("fav")
 
-    regular= request.form["regular"]
-    hips= request.form["hips"]
-    tunic= request.form["tunic"]
-    wanpi= request.form["wanpi"]
-    maxi= request.form["wanpi"]
+   # regular= request.form["regular"]
+   # hips= request.form["hips"]
+   # tunic= request.form["tunic"]
+   # wanpi= request.form["wanpi"]
+   # maxi= request.form["wanpi"]
 
-    print("color:::::::::::::::::::::::::::",color)
-    print("regular",regular)
-    print("hips",hips)
-    print("tunic",tunic)
-    print("wanpi",wanpi)
-    print("maxi",maxi)
+   # print("color:::::::::::::::::::::::::::",color)
+   # print("regular",regular)
+   # print("hips",hips)
+   # print("tunic",tunic)
+   # print("wanpi",wanpi)
+   # print("maxi",maxi)
 
     # create and save image funciton
     generate_save_image(color, 'static')
