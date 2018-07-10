@@ -47,15 +47,13 @@ div.menu {
   border-style:hidden;
 }
 
-<<<<<<< HEAD
-.table_menu{
+div.table_menu{
   font-family: 'Dancing Script', cursive;
-=======
-.menu-td:hover {
+  }
+div.menu-td:hover {
   border-radius: 10px 10px 10px 10px;
   margin:0px auto;
   background-color: rgba(209, 14, 132, 0.52);
->>>>>>> d4344311d64a1ec59579a91e2a2acd1c26973b70
 }
 
 
@@ -292,31 +290,31 @@ input.checkbox1{
 
 input.checkbox2{
 	vertical-align:middle;
-	width:21px;
+	width:19px;
 
 }
 
 input.checkbox3{
 	vertical-align:middle;
-	width:8px;
+	width:6px;
 
 }
 
 input.checkbox4{
 	vertical-align:middle;
-	width:20px;
+	width:17px;
 
 }
 
 input.checkbox5{
 	vertical-align:middle;
-	width:15px;
+	width:19px;
 
 }
 
 input.checkbox6{
 	vertical-align:middle;
-	width:18px;
+	width:12px;
 
 }
 
@@ -328,7 +326,7 @@ input.checkbox7{
 
 input.checkbox8{
 	vertical-align:middle;
-	width:18px;
+	width:20px;
 
 }
 input.checkbox9{
