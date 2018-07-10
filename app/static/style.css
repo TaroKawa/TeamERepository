@@ -47,8 +47,15 @@ div.menu {
   border-style:hidden;
 }
 
+<<<<<<< HEAD
 .table_menu{
   font-family: 'Dancing Script', cursive;
+=======
+.menu-td:hover {
+  border-radius: 10px 10px 10px 10px;
+  margin:0px auto;
+  background-color: rgba(209, 14, 132, 0.52);
+>>>>>>> d4344311d64a1ec59579a91e2a2acd1c26973b70
 }
 
 

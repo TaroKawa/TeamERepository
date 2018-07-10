@@ -35,3 +35,7 @@ def save_jpg(base_path, layer_path, layer_files, dir):
     if len(jpgs) != 0:
         for j, s in zip(jpgs, save):
             os.rename(j, s)
+
+
+if __name__ == "__main__":
+    change_name()
