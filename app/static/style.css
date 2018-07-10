@@ -1,5 +1,5 @@
 body{
-  background-color:#fcfcfc;
+  background-color:#F5F5F5;
 
 }
 
@@ -8,42 +8,77 @@ body{
   src: url();
 }
 
-
-h2.message_from_this_service{
-  font-family: 'Markazi Text', serif;
+div.genru{
+  overflow: hidden;
+  padding:1px;
+  border-bottom: 1px solid:#dcdcdc
+  margin:0;
 }
+
 div.box_menu{
-	margin:0px auto;
+	margin:0 auto;
   display: inline-block;
+  font-family: 'Dancing Script', cursive;
+
 }
 div.header{
   overflow: hidden;
-  background-color:#fccccc;
+  background-color:#fff;
+  padding:1px;
+  border-bottom: 1px solid:#dcdcdc
+
 
 }
 
 
-.title {
+div.title {
   font-weight:bold;
   font-size: 42px;
   font-family: 'Dancing Script', cursive;
+  display: inline-block;
+
 }
 
-.menu {
+div.menu {
+  font-weight:bold;
   font-size: 20pt;
-  font-family: 'Markazi Text', serif;
+  font-family: 'Dancing Script', cursive;
   float: right;
   border-style:hidden;
 }
 
+<<<<<<< HEAD
+.table_menu{
+  font-family: 'Dancing Script', cursive;
+=======
 .menu-td:hover {
   border-radius: 10px 10px 10px 10px;
   margin:0px auto;
   background-color: rgba(209, 14, 132, 0.52);
+>>>>>>> d4344311d64a1ec59579a91e2a2acd1c26973b70
 }
 
 
 hr.line1 {
+}
+
+ul.nav{
+}
+
+ul.nav li{
+  display: inline-block;
+  border: 1px solid #D35400;
+  padding: 10px;
+  text-align: center;
+  background-color: #333;
+  width:100px;
+  float:left;
+}
+
+ul.nav li a{
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
 }
 
 div.color_element{
@@ -60,11 +95,13 @@ div.box{
 	margin:0px auto;
   display: inline-block;
   padding: 20px;
-  float: left;
+  /*float: left;*/
 }
 div.box-container{
 	margin:0px auto;
   overflow: hidden;
+  background-color:#F5F5F5;
+  display: block;
 }
 div.image_created{
   float:right;
@@ -85,6 +122,9 @@ input.create{
 	width:80px;
 	height:40px;
 	text-align:center;
+  background-color: #FFF;/*ボタン色*/
+
+
 }
 .square_btn{
     display: inline-block;
@@ -333,13 +373,13 @@ div.cloth_botoom{
 	/*display: inline-block;*/
 	text-align:center;
 }
-
+/*
 .img-pos {
   position: absolute;
   top: 150px;
   left: 450px;
 }
-
+*/
 
 /*ポップアップ用*/
 #popup-background{
