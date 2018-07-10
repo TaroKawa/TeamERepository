@@ -3,14 +3,35 @@ $(document).ready(function () {
     $("#modal_open").click(function () {
     $(this).blur();
 
+    if ($("#checkbox1").prop('checked')) {
+      var wid = 1
+    } else if ($("#checkbox2").prop('checked')) {
+      var wid = 2
+    } else if ($("#checkbox8").prop("checked")) {
+      var wid = 8
+    } else {
+      var wid = 0
+    }
+
     $("#modal-overlay").fadeIn("slow");
-    $(".modal-content").fadeIn("slow");
+
+    $("#modal" + wid).fadeIn("slow");
     var which = ".modal-content"
     centeringModalSyncer(which);
   })
 
   $(".modal-close").unbind().click(function(){
-		$(".modal-content, #modal-overlay").fadeOut("slow", function(){
+    if ($("#checkbox1").prop('checked')) {
+      var wid = 1
+    } else if ($("#checkbox2").prop('checked')) {
+      var wid = 2
+    } else if ($("#checkbox8").prop("checked")) {
+      var wid = 8
+    } else {
+      var wid = 0
+    }
+
+		$("#modal"+wid+ ", #modal-overlay").fadeOut("slow", function(){
 			$("#modal-overlay").removeClass("modal-close");
 		});
 	});

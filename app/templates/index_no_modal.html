@@ -30,6 +30,7 @@
   </div>
 
   <!--999999999999999999999999999999999999999999999999999999999999-->
+  <div class="body-box">
   <div class="genru">
   <ul class="nav">
     <li><a href="">全て</a></li>
@@ -66,15 +67,15 @@
                       <button class="button8" name="color" type="button"></button>
                       <button class="button9" name="color" type="button"></button>
         	             <br>
-                      	<label> <input class="checkbox1" type="checkbox" name="fav" value=0> </label>
-                      	<label> <input class="checkbox2" type="checkbox" name="fav" value=1> </label>
-                      	<label> <input class="checkbox3" type="checkbox" name="fav" value=2> </label>
-                      	<label> <input class="checkbox4" type="checkbox" name="fav" value=3> </label>
-                      	<label> <input class="checkbox5" type="checkbox" name="fav" value=4> </label>
-                      	<label> <input class="checkbox6" type="checkbox" name="fav" value=5> </label>
-                      	<label> <input class="checkbox7" type="checkbox" name="fav" value=6> </label>
-                      	<label> <input class="checkbox8" type="checkbox" name="fav" value=7> </label>
-                      	<label> <input class="checkbox9" type="checkbox" name="fav" value=8> </label>
+                      	<label> <input id="checkbox1" type="checkbox" name="fav" value=0> </label>
+                      	<label> <input id="checkbox2" type="checkbox" name="fav" value=1> </label>
+                      	<label> <input id="checkbox3" type="checkbox" name="fav" value=2> </label>
+                      	<label> <input id="checkbox4" type="checkbox" name="fav" value=3> </label>
+                      	<label> <input id="checkbox5" type="checkbox" name="fav" value=4> </label>
+                      	<label> <input id="checkbox6" type="checkbox" name="fav" value=5> </label>
+                      	<label> <input id="checkbox7" type="checkbox" name="fav" value=6> </label>
+                      	<label> <input id="checkbox8" type="checkbox" name="fav" value=7> </label>
+                      	<label> <input id="checkbox9" type="checkbox" name="fav" value=8> </label>
                       </br>
                   </div><!-- /color-bottom -->
                 </div><!-- /color-box -->
@@ -119,10 +120,31 @@
             <p><a class="square_btn" href="#" id="modal_open">検索</a></p>
         </div>
       </div>
-
-      <div class="modal-content">
+      </div>
+      <div class="modal-content" id="modal0">
           <div class="modal-content-inner">
-              <p class="modal-title">This is a demo modal window</p>
+              <img src="../static/オレンジ_0.jpg" alt=""><br>
+              <a href="{{ response }}"><input type="button" name="recommend" value="商品ページへ"></a>
+              <input type="button" name="close" value="close" class="modal-close">
+          </div>
+      </div>
+      <div class="modal-content" id="modal1">
+          <div class="modal-content-inner">
+              <img src="../static/赤_Large_619.jpg" alt=""><br>
+              <a href="{{ response }}"><input type="button" name="recommend" value="商品ページへ"></a>
+              <input type="button" name="close" value="close" class="modal-close">
+          </div>
+      </div>
+      <div class="modal-content" id="modal2">
+          <div class="modal-content-inner">
+              <img src="../static/青_67.jpg" alt=""><br>
+              <a href="{{ response }}"><input type="button" name="recommend" value="商品ページへ"></a>
+              <input type="button" name="close" value="close" class="modal-close">
+          </div>
+      </div>
+      <div class="modal-content" id="modal8">
+          <div class="modal-content-inner">
+              <img src="../static/黒_Small_fr_99.jpg" alt=""><br>
               <a href="{{ response }}"><input type="button" name="recommend" value="商品ページへ"></a>
               <input type="button" name="close" value="close" class="modal-close">
           </div>

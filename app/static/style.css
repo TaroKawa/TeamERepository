@@ -3,11 +3,6 @@ body{
 
 }
 
-@font-face {
-  font-family: MyCursive;
-  src: url();
-}
-
 div.genru{
   overflow: hidden;
   padding:1px;
@@ -19,24 +14,20 @@ div.box_menu{
 	margin:0 auto;
   display: inline-block;
   font-family: 'Dancing Script', cursive;
-
 }
+
 div.header{
   overflow: hidden;
   background-color:#fff;
   padding:1px;
   border-bottom: 1px solid:#dcdcdc
-
-
 }
-
 
 div.title {
   font-weight:bold;
   font-size: 42px;
   font-family: 'Dancing Script', cursive;
   display: inline-block;
-
 }
 
 div.menu {
@@ -47,15 +38,18 @@ div.menu {
   border-style:hidden;
 }
 
-<<<<<<< HEAD
+.body-box {
+  margin: 0 auto;
+}
+
 .table_menu{
   font-family: 'Dancing Script', cursive;
-=======
+}
+
 .menu-td:hover {
   border-radius: 10px 10px 10px 10px;
   margin:0px auto;
   background-color: rgba(209, 14, 132, 0.52);
->>>>>>> d4344311d64a1ec59579a91e2a2acd1c26973b70
 }
 
 
@@ -63,6 +57,7 @@ hr.line1 {
 }
 
 ul.nav{
+  margin: 0 auto;
 }
 
 ul.nav li{
@@ -98,7 +93,7 @@ div.box{
   /*float: left;*/
 }
 div.box-container{
-	margin:0px auto;
+	margin:0 auto;
   overflow: hidden;
   background-color:#F5F5F5;
   display: block;
@@ -285,56 +280,49 @@ button.button10 {
 button.button10:hover {
     color: #fff;
 }
-input.checkbox1{
+input#checkbox1{
 	vertical-align:middle;
 }
 
 
-input.checkbox2{
+input#checkbox2{
+	vertical-align:middle;
+	width:21px;
+}
+
+input#checkbox3{
+	vertical-align:middle;
+	width:21px;
+}
+
+input#checkbox4{
+	vertical-align:middle;
+	width:20px;
+}
+
+input#checkbox5{
+	vertical-align:middle;
+	width:21px;
+}
+
+input#checkbox6{
+	vertical-align:middle;
+	width:21px;
+}
+
+input#checkbox7{
 	vertical-align:middle;
 	width:21px;
 
 }
 
-input.checkbox3{
+input#checkbox8{
 	vertical-align:middle;
-	width:8px;
-
+	width:21px;
 }
-
-input.checkbox4{
+input#checkbox9{
 	vertical-align:middle;
-	width:20px;
-
-}
-
-input.checkbox5{
-	vertical-align:middle;
-	width:15px;
-
-}
-
-input.checkbox6{
-	vertical-align:middle;
-	width:18px;
-
-}
-
-input.checkbox7{
-	vertical-align:middle;
-	width:16px;
-
-}
-
-input.checkbox8{
-	vertical-align:middle;
-	width:18px;
-
-}
-input.checkbox9{
-	vertical-align:middle;
-	width:16px;
-
+	width:21px;
 }
 
 
