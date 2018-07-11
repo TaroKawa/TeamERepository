@@ -14,13 +14,13 @@
 <body>
   <div class="header">
     <div class="box_menu">
-      <div class="title">ShapeIt</div></div>
+      <div class="title"><font color="#FFFFFF">ShapeIt</font></div></div>
     <div class="menu">
       <table  cellspacing="10">
         <tbody>
           <tr>
-            <td class="menu-td">History</td>
-            <td class="menu-td">Help</td>
+            <td class="menu-td"><font color="#FFFFFF">History</font></td>
+            <td class="menu-td">><font color="#FFFFFF">Help</font></td>
           </tr>
         </tbody>
       </table>
@@ -32,17 +32,25 @@
   <!--999999999999999999999999999999999999999999999999999999999999-->
   <div class="genru">
   <ul class="nav">
-    <li><a href="">全て</a></li>
-    <li><a href="">メンズ</a></li>
-    <li><a href="">レディース</a></li>
-    <li><a href="">キッズ</a></li>
+    <li><FORM><INPUT type="button" value="全て"
+                style="border-style:solid; border-width:0px; border-color:#F2F2F2; background:#F2F2F2; font-size:15pt; color: #8a8a8a"
+                  onMouseOver="this.style.background='#c0c0c0'" onMouseOut="this.style.background='#F2F2F2'"></FORM></li>
+    <li><FORM><INPUT type="button" value="メンズ"
+                style="border-style:solid; border-width:0px; border-color:#F2F2F2; background:#F2F2F2; font-size:15pt; color: #8a8a8a"
+                  onMouseOver="this.style.background='#c0c0c0'" onMouseOut="this.style.background='#F2F2F2'"></FORM></li>
+    <li><FORM><INPUT type="button" value="レディース"
+                style="border-style:solid; border-width:0px; border-color:#F2F2F2; background:#F2F2F2; font-size:15pt; color: #8a8a8a"
+                  onMouseOver="this.style.background='#c0c0c0'" onMouseOut="this.style.background='#F2F2F2'"></FORM></li>
+    <li><FORM><INPUT type="button" value="キッズ"
+                style="border-style:solid; border-width:0px; border-color:#F2F2F2; background:#F2F2F2; font-size:15pt; color: #8a8a8a"
+                  onMouseOver="this.style.background='#c0c0c0'" onMouseOut="this.style.background='#F2F2F2'"></FORM></li>
   </ul>
 </div>
 
   <div class="box-container">
 
 
-      <div class="box">
+      <div class='box1'><div class="box">
 
   <!--            <div class="color_element"><p><a class=square_btn href="#">カラーマップ</a></p></div>
                   <div class="color_element"><p><a class=square_btn href="#">RGB指定</a></p></div>
@@ -108,22 +116,35 @@
                     <div class="collar">襟の形＞</div>-->
                     <!--<div class="create"><p><a class="square_btn" href="#">生成</a></p></div>-->
 
-              <input type ="submit" class="create" value="生成" ></button>
+            <div class=button_boxA>
+              <div class=button_box1><input type ="submit" class="create" value="生成" ></button></div>
+              <div class=button_box2><input type ="submit" class="dummy" value="画像をアップロード"></button></div>
           	  </form>
           </div><!--/box-->
+        </div><!-- /box1--->
 
     <!--999999999999999999999999999999999999999999999999999999999999-->
-        <div class="box">
-             <img src="/static/one-piece_white.jpg" width="400" height="400" style="border:solid 1px #ccc;padding:40px 80px;,background-color:#fff" alt="">
+    </div>
+        <div class="box2"><div class="box">
+             <img src="/static/one-piece_white.jpg" width="200px",height="200px" style="border:solid 1px #ccc;padding:100px 100px; background-color:#fff" alt=""; class=image_created>
             <!-- <img src="/static/one-piece_white.jpg" width="400" height="400" style="border:solid 1px #ccc;padding:40px 80px;">-->
-            <p><a class="square_btn" href="#" id="modal_open">検索</a></p>
+            <div class=button_boxA>
+              <p class=button_box1><a class="square_btn" href="#" id="modal_open">検索</a></p>
+              <p class=button_box2><a class="square_btn" href="#">イイね！</a></p>
+            </div>
+          </div>
+        </div><!--box2-->
+
+        <div class='box3'><div class="box">
+          <a class="twitter-timeline" href="https://twitter.com/souken_blog?ref_src=twsrc%5Etfw">Tweets by souken_blog</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
-      </div>
+      </div><!--box3-->
+    </div>
 
       <div class="modal-content">
           <div class="modal-content-inner">
               <p class="modal-title">This is a demo modal window</p>
-              <a href="{{ response }}"><input type="button" name="recommend" value="商品ページへ"></a>
+              <a href="one-piece-red.jpg"><input type="button" name="recommend" value="商品ページへ"></a>
               <input type="button" name="close" value="close" class="modal-close">
           </div>
       </div>

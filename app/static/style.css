@@ -1,5 +1,5 @@
 body{
-  background-color:#F5F5F5;
+  background-color:#fafafa;
 
 }
 
@@ -10,20 +10,23 @@ body{
 
 div.genru{
   overflow: hidden;
-  padding:1px;
+  padding:0px;
   border-bottom: 1px solid:#dcdcdc
   margin:0;
+  width:100%;
+  background-color: #F2F2F2;
 }
 
 div.box_menu{
 	margin:0 auto;
   display: inline-block;
   font-family: 'Dancing Script', cursive;
+  font
 
 }
 div.header{
   overflow: hidden;
-  background-color:#fff;
+  background-color:#000000;
   padding:1px;
   border-bottom: 1px solid:#dcdcdc
 
@@ -58,21 +61,23 @@ hr.line1 {
 }
 
 ul.nav{
+  padding: 0px;
+  background-color:  #fafafa;
 }
 
 ul.nav li{
   display: inline-block;
-  border: 1px solid #D35400;
-  padding: 10px;
+  border: 0px solid #fafafa;
+
   text-align: center;
-  background-color: #333;
+  background-color: #fafafas;
   width:100px;
   float:left;
 }
 
 ul.nav li a{
   text-decoration: none;
-  color: #fff;
+  color: #b4b4b4;
   font-weight: bold;
 }
 
@@ -90,16 +95,44 @@ div.box{
 	margin:0px auto;
   display: inline-block;
   padding: 20px;
+
   /*float: left;*/
 }
+
 div.box-container{
 	margin:0px auto;
   overflow: hidden;
-  background-color:#F5F5F5;
+  background-color:#fafafa;
   display: block;
+  &:after{
+    content:"";s
+    display:block;
+    clear:both;
+  }
 }
+
+.box1, .box2, .box3 {
+  float: left;
+  width: 33.3333%;
+}
+
+
 div.image_created{
   float:right;
+}
+
+div.button_boxA{
+  display:block;
+  width:100%;
+  &:after{
+    display:block;
+    clear: both;
+  }
+}
+
+.button_box1, .button_box2{
+  float:left;
+  width: 50%;
 }
 #logo{
     width: 420px;
@@ -118,11 +151,16 @@ input.create{
 	height:40px;
 	text-align:center;
   background-color: #FFF;/*ボタン色*/
+}
 
-
+input.dummy{
+	width:120px;
+	height:40px;
+	text-align:center;
+  background-color: #FFF;/*ボタン色*/
 }
 .square_btn{
-    display: inline-block;
+    /*display: inline-block;*/
     padding: 0.5em 1em;
     text-decoration: none;
     background: #FFF;/*ボタン色*/
