@@ -1,2 +1,4 @@
-cssselect==0.9.1
-lxml==3.2.4
+Pillow
+torch
+torchvision
+flask
