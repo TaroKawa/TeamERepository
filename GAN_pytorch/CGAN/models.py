@@ -39,6 +39,7 @@ class Discriminator(nn.Module):
         x = self.conv4(x)
         x = self.avg_pool(x)
         x = x.view(n, -1)
+        x = F.dropout(x, p=0.2)
         x = self.linear(x)
         x = F.sigmoid(x)
 
