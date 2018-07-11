@@ -3,11 +3,11 @@ $(document).ready(function () {
     $("#modal_open").click(function () {
     $(this).blur();
 
-    if ($("#checkbox1").prop('checked')) {
+    if ($(".image_created").attr("src").match(/赤/)) {
       var wid = 1
-    } else if ($("#checkbox2").prop('checked')) {
+    } else if ($(".image_created").attr("src").match(/青/)) {
       var wid = 2
-    } else if ($("#checkbox8").prop("checked")) {
+    } else if ($(".image_created").attr("src").match(/黒/)) {
       var wid = 8
     } else {
       var wid = 0
@@ -21,11 +21,11 @@ $(document).ready(function () {
   })
 
   $(".modal-close").unbind().click(function(){
-    if ($("#checkbox1").prop('checked')) {
+    if ($(".image_created").attr("src").match(/赤/)) {
       var wid = 1
-    } else if ($("#checkbox2").prop('checked')) {
+    } else if ($(".image_created").attr("src").match(/青/)) {
       var wid = 2
-    } else if ($("#checkbox8").prop("checked")) {
+    } else if ($(".image_created").attr("src").match(/黒/)) {
       var wid = 8
     } else {
       var wid = 0
