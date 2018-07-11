@@ -2,7 +2,7 @@
 $(document).ready(function () {
     $("#modal_open").click(function () {
     $(this).blur();
-
+    console.log($(".image_created").attr("src"));
     if ($(".image_created").attr("src").match(/赤/)) {
       var wid = 1
     } else if ($(".image_created").attr("src").match(/青/)) {

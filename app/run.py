@@ -35,17 +35,17 @@ def selecting_color():
     #generate_save_image(color, 'static')
     print(color)
     if '0' in color:
-        base_dir = "../static/赤/"
+        base_dir = "static/赤/"
         imlist = os.listdir(base_dir)
         img = np.random.choice(imlist)
         image_directory = base_dir + img
     elif '1' in color:
-        base_dir = "../static/青/"
+        base_dir = "static/青/"
         imlist = os.listdir(base_dir)
         img = np.random.choice(imlist)
         image_directory = base_dir + img
-    elif '8' in color:
-        base_dir = "../static/黒/"
+    elif '7' in color:
+        base_dir = "static/黒/"
         imlist = os.listdir(base_dir)
         img = np.random.choice(imlist)
         image_directory = base_dir + img
