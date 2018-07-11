@@ -1,6 +1,8 @@
 from flask import Flask, render_template
 # GETパラメーターを取得するために、requestを追加する
 from flask import request
+import numpy as np
+import os
 
 from utils import generate_save_image
 
@@ -10,7 +12,7 @@ print ("test4 Post works!")
 @app.route('/')
 def index():
     # return render_template('index.html', message="こんにちは")
-    return render_template('index_no_modal.html', message="こんにちは")
+    return render_template('index_no_modal.html', message="こんにちは", image_from_post="../static/one-piece_white.jpg")
 
 @app.route("/selecting_color",methods=['POST'])
 def selecting_color():
@@ -30,9 +32,25 @@ def selecting_color():
    # print("maxi",maxi)
 
     # create and save image funciton
-    generate_save_image(color, 'static')
-
-    image_directory="/static/clothes.jpg"
+    #generate_save_image(color, 'static')
+    print(color)
+    if '0' in color:
+        base_dir = "../static/赤/"
+        imlist = os.listdir(base_dir)
+        img = np.random.choice(imlist)
+        image_directory = base_dir + img
+    elif '1' in color:
+        base_dir = "../static/青/"
+        imlist = os.listdir(base_dir)
+        img = np.random.choice(imlist)
+        image_directory = base_dir + img
+    elif '8' in color:
+        base_dir = "../static/黒/"
+        imlist = os.listdir(base_dir)
+        img = np.random.choice(imlist)
+        image_directory = base_dir + img
+    else:
+        image_directory="/static/clothes.jpg"
 
     return render_template('index_no_modal.html',image_from_post=image_directory)
 
